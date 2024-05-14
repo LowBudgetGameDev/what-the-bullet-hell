@@ -1,15 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public event EventHandler OnShoot;
+
     private float movementSpeed = 20f;
 
     private void Update()
     {
         HandleMovement();
         HandleAiming();
+        HandleShooting();
     }
 
     private void HandleMovement()
@@ -46,5 +50,13 @@ public class PlayerController : MonoBehaviour
         Vector3 dirToMouse = (mouseWorldPosition - transform.position).normalized;
 
         transform.up = dirToMouse;
+    }
+
+    private void HandleShooting()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnShoot?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
