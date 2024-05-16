@@ -7,40 +7,27 @@ public class PlayerController : MonoBehaviour
 {
     public event EventHandler OnShoot;
 
+    private new Rigidbody2D rigidbody2D;
+
     private float movementSpeed = 20f;
+
+    private void Awake()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
-        HandleMovement();
         HandleAiming();
         HandleShooting();
+        HandleMovement();
     }
 
     private void HandleMovement()
     {
-        Vector3 movementVector = new Vector3();
+        Vector2 movementVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            movementVector.y += 1;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            movementVector.y += -1;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            movementVector.x += -1;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            movementVector.x += 1;
-        }
-
-        transform.position += movementVector.normalized * movementSpeed * Time.deltaTime;
+        rigidbody2D.velocity = movementVector.normalized * movementSpeed;
     }
 
     private void HandleAiming()

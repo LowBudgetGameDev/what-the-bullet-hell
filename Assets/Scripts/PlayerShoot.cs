@@ -6,6 +6,8 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Transform bulletPrefab;
 
+    private int damageAmount = 1;
+
     private void Start()
     {
         GetComponent<PlayerController>().OnShoot += PlayerShoot_OnShoot;
@@ -19,6 +21,6 @@ public class PlayerShoot : MonoBehaviour
 
         Vector3 dirToMouse = (mouseWorldPosition - transform.position).normalized;
 
-        bullet.GetComponent<Bullet>().SetUp(dirToMouse);
+        bullet.GetComponent<Bullet>().SetUp(dirToMouse, damageAmount);
     }
 }

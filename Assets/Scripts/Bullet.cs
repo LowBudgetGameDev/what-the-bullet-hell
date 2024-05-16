@@ -5,18 +5,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float speed = 50f;
+    private int damageAmount;
 
-    private Vector3 shootDir;
-
-    public void SetUp(Vector3 shootDir)
+    public void SetUp(Vector3 shootDir, int damageAmount)
     {
-        this.shootDir = shootDir;
+        this.damageAmount = damageAmount;
+
+        GetComponent<Rigidbody2D>().velocity = shootDir * speed;
 
         Destroy(gameObject, 5f);
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.position += shootDir * speed * Time.deltaTime;
+        if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
+        {
+            healthSystem.Damage(damageAmount);
+        }
+
+        Destroy(gameObject);
     }
 }

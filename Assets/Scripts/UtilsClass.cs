@@ -23,4 +23,9 @@ public static class UtilsClass
 
         return mouseWorldPosition;
     }
+
+    public static float VectorToAngleDegrees(Vector3 vector)
+    {
+        return Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+    }
 }
