@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7460768236436843581}
   - component: {fileID: 56612708481321465}
   m_Layer: 8
-  m_Name: SingleShootEnemy
+  m_Name: ManyShootEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cb10b5e208b4c7fba311175ce8eb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 1
   collisionDamage: 1
 --- !u!114 &-7460768236436843581
 MonoBehaviour:
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147bac00c82754e9ab1535c4b58856db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 20
 --- !u!114 &56612708481321465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4748954883564159360, guid: ffd53c484e61b40eabaf243069c3d5d1, type: 3}
-  numBullets: 1
+  numBullets: 12
   shootDamage: 1
-  shootTimerMax: 1
+  shootTimerMax: 0.5
 --- !u!1 &8308228450851051436
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -28,4 +28,11 @@ public static class UtilsClass
     {
         return Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
     }
+
+    public static Vector3 AngleDegreesToVector(float angleDegrees)
+    {
+        float angleRadians = angleDegrees * Mathf.Deg2Rad;
+
+        return new Vector3(Mathf.Cos(angleRadians), Mathf.Sin(angleRadians));
+    }
 }

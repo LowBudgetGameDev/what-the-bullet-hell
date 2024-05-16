@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5143429607385807319}
   - component: {fileID: 5694835448338931321}
-  - component: {fileID: 1265925053854108895}
+  - component: {fileID: 2057457661201074467}
   - component: {fileID: -6232287078160310250}
   - component: {fileID: -7460768236436843581}
   - component: {fileID: 56612708481321465}
   m_Layer: 8
-  m_Name: SingleShootEnemy
+  m_Name: QuadShootEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &1265925053854108895
-CircleCollider2D:
+--- !u!61 &2057457661201074467
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,8 +97,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &-6232287078160310250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cb10b5e208b4c7fba311175ce8eb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 2
   collisionDamage: 1
 --- !u!114 &-7460768236436843581
 MonoBehaviour:
@@ -125,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147bac00c82754e9ab1535c4b58856db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
 --- !u!114 &56612708481321465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,9 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4748954883564159360, guid: ffd53c484e61b40eabaf243069c3d5d1, type: 3}
-  numBullets: 1
+  numBullets: 4
   shootDamage: 1
-  shootTimerMax: 1
+  shootTimerMax: 0.75
 --- !u!1 &8308228450851051436
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +225,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

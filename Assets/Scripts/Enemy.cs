@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
         }
 
         dirToPlayer = (playerTransform.position - transform.position).normalized;
+
+        transform.up = dirToPlayer;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
