@@ -31,7 +31,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot(float angleDegrees)
     {
-        Transform bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);
 
         float pointAngleDegrees = UtilsClass.VectorToAngleDegrees(transform.up);
 

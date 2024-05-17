@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void PlayerShoot_OnShoot(object sender, System.EventArgs e)
     {
-        Transform bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);
 
         Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
 

@@ -7,13 +7,22 @@ public class Bullet : MonoBehaviour
     private float speed = 50f;
     private int damageAmount;
 
+    private float hideTimer;
+
     public void SetUp(Vector3 shootDir, int damageAmount)
     {
         this.damageAmount = damageAmount;
 
         GetComponent<Rigidbody2D>().velocity = shootDir * speed;
 
-        Destroy(gameObject, 5f);
+        hideTimer = 5f;
+    }
+
+    private void Update()
+    {
+        hideTimer -= Time.deltaTime;
+
+        if (hideTimer < 0f) ObjectPooler.Instance.DestoryWithPool(transform);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,6 +32,11 @@ public class Bullet : MonoBehaviour
             healthSystem.Damage(damageAmount);
         }
 
-        Destroy(gameObject);
+        ObjectPooler.Instance.DestoryWithPool(transform);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ObjectPooler.Instance.DestoryWithPool(transform);
     }
 }
