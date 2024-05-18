@@ -12,7 +12,7 @@ public class ObjectPoolItem
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler Instance;
+    public static ObjectPooler Instance { get; private set; }
 
     [SerializeField] private List<ObjectPoolItem> itemsToPool;
     [SerializeField] private Dictionary<Transform, Queue<Transform>> poolDictionary;

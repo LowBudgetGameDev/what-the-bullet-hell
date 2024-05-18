@@ -1,22 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 3f;
     [SerializeField] private int collisionDamage = 1;
+    [SerializeField] private int xpGained = 1;
 
     private new Rigidbody2D rigidbody2D;
 
     private Transform playerTransform;
     private Vector3 dirToPlayer;
 
+    private Action killAction;
+
+    public void SetUp(Transform playerTransform, Action killAction)
+    {
+        this.playerTransform = playerTransform;
+        this.killAction = killAction;
+    }
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         movementSpeed *= Random.Range(0.9f, 1.1f);
     }
@@ -47,10 +56,19 @@ public class Enemy : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
 
-        if (collision.gameObject.layer == 1 << 10)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy Despawner"))
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.GainXp(xpGained);
+        killAction();
     }
 }
