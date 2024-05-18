@@ -47,5 +47,10 @@ public class Enemy : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.layer == 1 << 10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
