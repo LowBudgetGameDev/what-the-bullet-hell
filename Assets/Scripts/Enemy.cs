@@ -68,7 +68,8 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        LevelManager.Instance.GainXp(xpGained);
+        if (GetComponent<HealthSystem>().GetHealth() == 0) LevelManager.Instance.GainXp(xpGained);
+
         killAction();
     }
 }

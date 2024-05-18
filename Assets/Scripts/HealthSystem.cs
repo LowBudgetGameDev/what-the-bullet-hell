@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    public event EventHandler OnDamaged;
+
     [SerializeField] private int maxHealth = 5;
 
     private int health;
@@ -18,6 +21,8 @@ public class HealthSystem : MonoBehaviour
         health -= amount;
 
         health = Mathf.Clamp(health, 0, maxHealth);
+
+        OnDamaged?.Invoke(this, EventArgs.Empty);
 
         if (health == 0)
         {
