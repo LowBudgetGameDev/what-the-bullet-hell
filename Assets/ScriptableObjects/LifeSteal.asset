@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LifeSteal
   m_EditorClassIdentifier: 
   upgrade: 2
-  levelUpAmount: 1
-  script: {fileID: 0}
+  levelUpAmount: 0.18
+  script: {fileID: 11500000, guid: d15505a6907b24a98b04af438a470349, type: 3}
   counter: {fileID: 11400000, guid: 2bbd8295ceeb042548863a33dd92f145, type: 2}

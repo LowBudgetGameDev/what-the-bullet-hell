@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ExplosiveBullets
   m_EditorClassIdentifier: 
   upgrade: 3
-  levelUpAmount: 1
-  script: {fileID: 0}
+  levelUpAmount: 3
+  script: {fileID: 11500000, guid: 3bf821f13c1fe4634a160512ab4c2208, type: 3}
   counter: {fileID: 11400000, guid: 0fece7c39653c42e5966b6b2e41a06e1, type: 2}

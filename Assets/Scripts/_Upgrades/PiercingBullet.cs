@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class PiercingBullet : BulletUpgrade
 {
-    public override void OnCollided(Collision2D collision, int damageAmount, Transform shooter)
+    private UpgradeSO upgrade;
+    private int enemiesHit;
+
+    private void OnEnable()
     {
+        enemiesHit = 0;
+    }
+
+    private void Start()
+    {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Piercing_Bullets);
+    }
+
+    public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
+    {
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Piercing_Bullets);
+
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
             healthSystem.Damage(damageAmount);
         }
 
-        ObjectPooler.Instance.DestoryWithPool(transform);
+        enemiesHit++;
+
+        int maxEnemyHit = (int) (UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount);
+
+        if (enemiesHit > maxEnemyHit) ObjectPooler.Instance.DestoryWithPool(transform);
     }
 }

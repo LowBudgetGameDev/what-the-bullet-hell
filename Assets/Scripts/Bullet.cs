@@ -33,16 +33,28 @@ public class Bullet : MonoBehaviour
         if (hideTimer < 0f) ObjectPooler.Instance.DestoryWithPool(transform);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        foreach (BulletUpgrade upgrade in upgradeList)
-        {
-            upgrade.OnCollided(collision, damageAmount, shooter);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ObjectPooler.Instance.DestoryWithPool(transform);
+        if (upgradeList.Length == 0)
+        {
+            if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
+            {
+                healthSystem.Damage(damageAmount);
+            }
+
+            ObjectPooler.Instance.DestoryWithPool(transform);
+        }
+
+        bool hasPiercing = TryGetComponent(out PiercingBullet piercing);
+
+        foreach (BulletUpgrade upgrade in upgradeList)
+        {
+            upgrade.OnCollided(collision, damageAmount, shooter, hasPiercing);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet Despawner"))
+        {
+            ObjectPooler.Instance.DestoryWithPool(transform);
+        }
     }
 }

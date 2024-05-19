@@ -771,7 +771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526210931}
   - component: {fileID: 526210932}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

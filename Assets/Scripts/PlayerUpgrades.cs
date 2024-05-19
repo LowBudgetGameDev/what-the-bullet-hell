@@ -12,8 +12,14 @@ public class PlayerUpgrades : MonoBehaviour
 
     private void PlayerUpgrades_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
     {
-        MonoScript upgradeScript = (MonoScript) e.upgrade.script;
+        if (e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
+            e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
+            e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
+            e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun))
+        {
+            MonoScript upgradeScript = (MonoScript)e.upgrade.script;
 
-        gameObject.AddComponent(upgradeScript.GetClass());
+            gameObject.AddComponent(upgradeScript.GetClass());
+        }
     }
 }

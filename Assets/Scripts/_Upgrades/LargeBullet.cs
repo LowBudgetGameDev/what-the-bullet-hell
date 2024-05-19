@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class LargeBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private UpgradeSO upgrade;
+
+    private void Start()
     {
-        
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
     }
 
-    // Update is called once per frame
-    void Update()
+    public float GetBulletScaledSize()
     {
-        
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
+
+        return UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
     }
 }

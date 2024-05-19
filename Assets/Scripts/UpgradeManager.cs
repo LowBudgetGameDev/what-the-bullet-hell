@@ -14,9 +14,7 @@ public class UpgradeManager : MonoBehaviour
         Poison,
         Piercing_Bullets,
         Large_Bullets,
-        Shotgun,
-        Stun_Bullets,
-        Regeneration
+        Shotgun
     }
 
     public class UpgradeUnlockedEventArgs : EventArgs

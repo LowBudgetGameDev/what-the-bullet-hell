@@ -13,6 +13,10 @@ public class HealthSystem : MonoBehaviour
 
     private int health;
 
+    private float poisonTimer;
+    private float poisonDamageTimer;
+    private float poisonDamageTimerMax;
+
     private void Awake()
     {
         health = maxHealth;
@@ -25,6 +29,20 @@ public class HealthSystem : MonoBehaviour
         {
             AddBonusHealth();
         };
+    }
+
+    private void Update()
+    {
+        if (poisonTimer <= 0f) return;
+
+        poisonTimer -= Time.deltaTime;
+        poisonDamageTimer -= Time.deltaTime;
+
+        if (poisonDamageTimer < 0f)
+        {
+            Damage(1);
+            poisonDamageTimer += poisonDamageTimerMax;
+        }
     }
 
     private void AddBonusHealth()
@@ -51,6 +69,13 @@ public class HealthSystem : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Poison(float damageInterval, float duration)
+    {
+        poisonTimer = duration;
+        poisonDamageTimerMax = damageInterval;
+        poisonDamageTimer = poisonDamageTimerMax;
     }
 
     public void Heal(int amount)

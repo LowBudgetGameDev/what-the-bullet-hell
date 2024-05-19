@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class PoisonBullet : BulletUpgrade
 {
-    public override void OnCollided(Collision2D collision, int damageAmount, Transform shooter)
+    private UpgradeSO upgrade;
+
+    private void Start()
     {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Poison);
+    }
+
+    public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
+    {
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Poison);
+
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
-            healthSystem.Damage(damageAmount);
+            float poisonDuration = UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+
+            healthSystem.Poison(1f, poisonDuration);
         }
 
-        ObjectPooler.Instance.DestoryWithPool(transform);
+        if (canDestroy) ObjectPooler.Instance.DestoryWithPool(transform);
     }
 }

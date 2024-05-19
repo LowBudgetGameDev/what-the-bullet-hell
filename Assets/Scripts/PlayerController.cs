@@ -11,12 +11,36 @@ public class PlayerController : MonoBehaviour
 
     private float movementSpeed = 20f;
     private float shootTimerMax = 0.25f;
+    private float originalShootTimerMax;
 
     private float shootTimer;
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        originalShootTimerMax = shootTimerMax;
+    }
+
+    private void Start()
+    {
+        UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) =>
+        {
+            DecreaseShootTimeMax();
+        };
+
+        DecreaseShootTimeMax();
+    }
+
+    private void DecreaseShootTimeMax()
+    {
+        if (this == null) return;
+
+        FireRateUpgrade healthUpgrade = GetComponent<FireRateUpgrade>();
+
+        if (healthUpgrade == null) return;
+
+        shootTimerMax = originalShootTimerMax * healthUpgrade.GetFireRateMultiplier();
+        shootTimer = 0f;
     }
 
     private void Update()
