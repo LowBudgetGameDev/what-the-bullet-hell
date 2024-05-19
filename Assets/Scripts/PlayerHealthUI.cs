@@ -22,7 +22,7 @@ public class PlayerHealthUI : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         healthAnimator = GetComponent<Animator>();
 
-        healthSystem.OnDamaged += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
+        healthSystem.OnHealthChanged += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
     }
 
     private void Update()

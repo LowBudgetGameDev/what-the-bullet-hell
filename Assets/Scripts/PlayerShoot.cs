@@ -22,6 +22,6 @@ public class PlayerShoot : MonoBehaviour
 
         Vector3 dirToMouse = (mouseWorldPosition - transform.position).normalized;
 
-        bullet.GetComponent<Bullet>().SetUp(dirToMouse, damageAmount);
+        bullet.GetComponent<Bullet>().SetUp(dirToMouse, damageAmount, transform);
     }
 }

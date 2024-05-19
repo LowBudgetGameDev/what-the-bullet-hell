@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     private int level;
     private int xp;
-    private int startLevelUpXp = 5;
+    private int startLevelUpXp = 1;
     private int levelUpXp;
     private int levelUpXpIncrease = 3;
 

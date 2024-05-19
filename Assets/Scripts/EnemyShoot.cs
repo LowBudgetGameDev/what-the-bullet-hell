@@ -37,6 +37,6 @@ public class EnemyShoot : MonoBehaviour
 
         if (pointAngleDegrees < 0f) pointAngleDegrees += 360f;
 
-        bullet.GetComponent<Bullet>().SetUp(UtilsClass.AngleDegreesToVector(pointAngleDegrees + angleDegrees), shootDamage);
+        bullet.GetComponent<Bullet>().SetUp(UtilsClass.AngleDegreesToVector(pointAngleDegrees + angleDegrees), shootDamage, transform);
     }
 }

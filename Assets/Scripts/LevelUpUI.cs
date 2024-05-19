@@ -20,6 +20,7 @@ public class LevelUpUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            UpgradeManager.Instance.LevelUpUpgrade(UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health));
             Hide();
         }
     }
