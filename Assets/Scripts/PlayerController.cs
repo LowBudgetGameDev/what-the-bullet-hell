@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
 
     private float movementSpeed = 20f;
+    private float shootTimerMax = 0.25f;
+
+    private float shootTimer;
 
     private void Awake()
     {
@@ -41,9 +44,16 @@ public class PlayerController : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0)) shootTimer = 0f;
+
+        if (!Input.GetMouseButton(0)) return;
+
+        shootTimer -= Time.deltaTime;
+
+        if (shootTimer < 0f)
         {
             OnShoot?.Invoke(this, EventArgs.Empty);
+            shootTimer += shootTimerMax;
         }
     }
 }
