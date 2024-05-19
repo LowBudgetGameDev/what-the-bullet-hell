@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
+
+    public event EventHandler OnLevelUp;
 
     private int level;
     private int xp;
@@ -35,6 +38,7 @@ public class LevelManager : MonoBehaviour
 
         levelUpXp += levelUpXpIncrease;
 
+        OnLevelUp?.Invoke(this, EventArgs.Empty);
         Debug.Log(level);
     }
 }
