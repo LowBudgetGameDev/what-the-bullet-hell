@@ -15,4 +15,4 @@ MonoBehaviour:
   upgrade: 2
   levelUpAmount: 0.18
   script: {fileID: 11500000, guid: d15505a6907b24a98b04af438a470349, type: 3}
-  counter: {fileID: 11400000, guid: 2bbd8295ceeb042548863a33dd92f145, type: 2}
+  counter: {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}
