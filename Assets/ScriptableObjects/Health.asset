@@ -16,3 +16,6 @@ MonoBehaviour:
   levelUpAmount: 1
   script: {fileID: 11500000, guid: 3505c0fdec6cc4de998c68293f7e81ae, type: 3}
   counter: {fileID: 11400000, guid: 8f2e43c2236bd41ff85b9cc10499a23f, type: 2}
+  icon: {fileID: 0}
+  nameString: Health
+  description: Increases your max health so it will take longer for you to die.

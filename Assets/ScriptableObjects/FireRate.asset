@@ -16,3 +16,7 @@ MonoBehaviour:
   levelUpAmount: 0.1
   script: {fileID: 11500000, guid: b431cbc3f303945129644e80d5149690, type: 3}
   counter: {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}
+  icon: {fileID: 0}
+  nameString: Shoot Speed
+  description: Will decrease the time between shots letting you shoot more bullets
+    per second.

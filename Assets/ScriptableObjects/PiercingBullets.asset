@@ -16,3 +16,7 @@ MonoBehaviour:
   levelUpAmount: 2
   script: {fileID: 11500000, guid: 9adbb3bdfcb5145059a583c0f2f8a946, type: 3}
   counter: {fileID: 11400000}
+  icon: {fileID: 0}
+  nameString: Piercing bullets
+  description: Your bullets will be able to shoot through a couple enemies before
+    stopping.

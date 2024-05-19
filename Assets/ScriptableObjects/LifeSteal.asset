@@ -16,3 +16,6 @@ MonoBehaviour:
   levelUpAmount: 0.18
   script: {fileID: 11500000, guid: d15505a6907b24a98b04af438a470349, type: 3}
   counter: {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}
+  icon: {fileID: 0}
+  nameString: Life Steal
+  description: Everytime you hit and enemy you gain just as much health as they lose.
