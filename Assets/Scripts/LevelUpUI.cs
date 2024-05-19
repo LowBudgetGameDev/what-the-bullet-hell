@@ -31,6 +31,22 @@ public class LevelUpUI : MonoBehaviour
     {
         UpgradeManager.Upgrade[] possibleUpgrades = (UpgradeManager.Upgrade[])Enum.GetValues(typeof(UpgradeManager.Upgrade));
 
+        if (!UpgradeManager.Instance.CanUnlockUpgrades())
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                UpgradeSO upgradeSO = UpgradeManager.Instance.GetUnlockedUpgrades()[i];
+
+                Transform upgradeUI = Instantiate(upgradeUIPrefab, upgradeContainer);
+
+                upgradeUI.GetComponent<UpgradeUI>().SetUp(upgradeSO);
+                upgradeUI.GetComponent<UpgradeUI>().OnClick += (object sender, EventArgs e) => { Hide(); };
+
+                upgradeUIList.Add(upgradeUI);
+            }
+            return;
+        }
+
         List<UpgradeManager.Upgrade> possibleUpgradesList = new List<UpgradeManager.Upgrade>(possibleUpgrades);
 
         for (int i = 0; i < 3; i++)

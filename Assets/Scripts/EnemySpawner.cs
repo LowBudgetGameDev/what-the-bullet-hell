@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -14,18 +15,38 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> enemyPrefabList;
     [SerializeField] private int[] enemySpawnCompareValues;
 
+    private List<UpgradeSO> counterUpgradesList;
+
     private float spawnTimer;
     private int numEnemies;
     private Vector2 cameraSize;
 
     private void Awake()
     {
+        counterUpgradesList = new List<UpgradeSO>();
+
         spawnTimer = spawnTimerMax;
 
         Camera mainCamera = UtilsClass.GetMainCamera();
         cameraSize = new Vector2(
             mainCamera.orthographicSize * mainCamera.aspect * 2,
             mainCamera.orthographicSize * 2);
+    }
+
+    private void Start()
+    {
+        UpgradeManager.Instance.OnUpgradeUnlocked += EnemySpawner_OnUpgradeUnlocked;
+    }
+
+    private void EnemySpawner_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
+    {
+        if (e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun))
+        {
+            counterUpgradesList.Add(e.upgrade.counter);
+        }
     }
 
     private void Update()
@@ -77,6 +98,13 @@ public class EnemySpawner : MonoBehaviour
         Transform enemy = Instantiate(enemyPrefabList[enemyIndex],
                 spawnPosition,
                 Quaternion.identity);
+
+        foreach (UpgradeSO upgrade in counterUpgradesList)
+        {
+            MonoScript upgradeScript = (MonoScript)upgrade.script;
+
+            enemy.gameObject.AddComponent(upgradeScript.GetClass());
+        }
 
         enemy.GetComponent<Enemy>().SetUp(playerTransform, () => { numEnemies--; });
 

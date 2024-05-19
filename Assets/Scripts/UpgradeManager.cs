@@ -85,6 +85,11 @@ public class UpgradeManager : MonoBehaviour
         return upgradeSOConversion[upgrade];
     }
 
+    public List<UpgradeSO> GetUnlockedUpgrades()
+    {
+        return unlockedUpgrades;
+    }
+
     public bool CanUnlockUpgrades()
     {
         return upgradeLevelDictionary.Count < maxUnlockableUpgrades;

@@ -29,6 +29,8 @@ public class UpgradeUI : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
+            UpgradeManager.Instance.LevelUpUpgrade(upgrade);
+
             OnClick?.Invoke(this, EventArgs.Empty);
         });
     }

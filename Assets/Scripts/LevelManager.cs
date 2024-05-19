@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     private int xp;
     private int startLevelUpXp = 1;
     private int levelUpXp;
-    private int levelUpXpIncrease = 3;
+    private int levelUpXpIncrease = 1;
 
     private void Awake()
     {
