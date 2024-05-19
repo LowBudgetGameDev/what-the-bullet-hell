@@ -464,7 +464,12 @@ MonoBehaviour:
   maxEnemyAmount: 20
   spawnTimerMax: 0.75
   mapSize: {x: 216, y: 216}
-  enemyPrefab: {fileID: 6296931098991577089, guid: 7603b729985bf4682843d67acb3a8cfd, type: 3}
+  enemyPrefabList:
+  - {fileID: 6296931098991577089, guid: 7603b729985bf4682843d67acb3a8cfd, type: 3}
+  - {fileID: 5143429607385807319, guid: 95c7204bdf7334210a9198b3c3cb9c0a, type: 3}
+  - {fileID: 5143429607385807319, guid: cf481f3632a4a456b89f12e6d7cb3f06, type: 3}
+  - {fileID: 5143429607385807319, guid: 0eeffe3ae80dd4f5f91d42afddd20eee, type: 3}
+  enemySpawnCompareValues: 1e000000460000005a00000064000000
 --- !u!4 &309000729
 Transform:
   m_ObjectHideFlags: 0

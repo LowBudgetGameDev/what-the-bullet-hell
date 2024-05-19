@@ -111,8 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cb10b5e208b4c7fba311175ce8eb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
   movementSpeed: 3
   collisionDamage: 1
+  xpGained: 1
 --- !u!114 &-7460768236436843581
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private bool lookAtPlayer = false;
     [SerializeField] private float movementSpeed = 3f;
     [SerializeField] private int collisionDamage = 1;
     [SerializeField] private int xpGained = 1;
@@ -44,6 +45,8 @@ public class Enemy : MonoBehaviour
         }
 
         dirToPlayer = (playerTransform.position - transform.position).normalized;
+
+        if (lookAtPlayer == false) return;
 
         transform.up = dirToPlayer;
     }

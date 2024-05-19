@@ -11,7 +11,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnTimerMax = 1f;
     [SerializeField] private Vector2 mapSize;
 
-    [SerializeField] private Transform enemyPrefab;
+    [SerializeField] private List<Transform> enemyPrefabList;
+    [SerializeField] private int[] enemySpawnCompareValues;
 
     private float spawnTimer;
     private int numEnemies;
@@ -60,7 +61,20 @@ public class EnemySpawner : MonoBehaviour
         spawnPosition.x = Mathf.Clamp(spawnPosition.x, -mapSize.x / 2, mapSize.x / 2);
         spawnPosition.y = Mathf.Clamp(spawnPosition.y, -mapSize.y / 2, mapSize.y / 2);
 
-        Transform enemy = Instantiate(enemyPrefab,
+        int randomInt = Random.Range(0, 100);
+
+        int enemyIndex = 0;
+
+        for (int i = 0; i < enemySpawnCompareValues.Length; i++)
+        {
+            if (randomInt < enemySpawnCompareValues[i])
+            {
+                enemyIndex = i;
+                break;
+            }
+        }
+
+        Transform enemy = Instantiate(enemyPrefabList[enemyIndex],
                 spawnPosition,
                 Quaternion.identity);
 
