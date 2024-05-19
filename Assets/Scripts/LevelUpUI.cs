@@ -2,10 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelUpUI : MonoBehaviour
 {
+    [SerializeField] private Transform upgradeContainer;
+    [SerializeField] private Transform upgradeUIPrefab;
+
+    private List<Transform> upgradeUIList;
+
     private Animator animator;
+
+    private void Awake()
+    {
+        upgradeUIList = new List<Transform>();
+    }
 
     private void Start()
     {
@@ -16,13 +27,37 @@ public class LevelUpUI : MonoBehaviour
         Hide();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        UpgradeManager.Upgrade[] possibleUpgrades = (UpgradeManager.Upgrade[])Enum.GetValues(typeof(UpgradeManager.Upgrade));
+
+        List<UpgradeManager.Upgrade> possibleUpgradesList = new List<UpgradeManager.Upgrade>(possibleUpgrades);
+
+        for (int i = 0; i < 3; i++)
         {
-            UpgradeManager.Instance.LevelUpUpgrade(UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health));
-            Hide();
+            int upgradeIndex = Random.Range(0, possibleUpgradesList.Count);
+
+            UpgradeSO upgradeSO = UpgradeManager.Instance.GetUpgradeSO(possibleUpgradesList[upgradeIndex]);
+
+            Transform upgradeUI = Instantiate(upgradeUIPrefab, upgradeContainer);
+
+            upgradeUI.GetComponent<UpgradeUI>().SetUp(upgradeSO);
+            upgradeUI.GetComponent<UpgradeUI>().OnClick += (object sender, EventArgs e) => { Hide(); };
+
+            upgradeUIList.Add(upgradeUI);
+
+            possibleUpgradesList.RemoveAt(upgradeIndex);
         }
+    }
+
+    private void OnDisable()
+    {
+        foreach (Transform upgradeUI in upgradeUIList)
+        {
+            Destroy(upgradeUI.gameObject);
+        }
+
+        upgradeUIList.Clear();
     }
 
     private void Show()
@@ -32,7 +67,7 @@ public class LevelUpUI : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    private void Hide()
+    public void Hide()
     {
         animator.SetTrigger("Close");
         gameObject.SetActive(false);

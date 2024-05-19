@@ -9,4 +9,7 @@ public class UpgradeSO : ScriptableObject
     public float levelUpAmount;
     public Object script;
     public UpgradeSO counter;
+    public Sprite icon;
+    public string nameString;
+    public string description;
 }

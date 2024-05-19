@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2508600728968053341}
   - component: {fileID: 6788961473198614237}
   - component: {fileID: 4735836270685599520}
+  - component: {fileID: 2460734416959171167}
   m_Layer: 5
   m_Name: UpgradeUI
   m_TagString: Untagged
@@ -107,6 +108,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2460734416959171167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878625129176080441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfa49e0e1fcb4fe8b9b1ffc1ba43c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 6936384369076321828}
+  icon: {fileID: 3709117805204578332}
+  description: {fileID: 8166852416930132003}
+  counterText: {fileID: 7816068206996610038}
 --- !u!1 &944672440456710888
 GameObject:
   m_ObjectHideFlags: 0
