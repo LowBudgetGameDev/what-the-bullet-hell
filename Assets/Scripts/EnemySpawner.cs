@@ -36,6 +36,12 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         UpgradeManager.Instance.OnUpgradeUnlocked += EnemySpawner_OnUpgradeUnlocked;
+        LevelManager.Instance.OnLevelUp += EnemySpawner_OnLevelUp;
+    }
+
+    private void EnemySpawner_OnLevelUp(object sender, System.EventArgs e)
+    {
+        spawnTimerMax -= 0.03f;
     }
 
     private void EnemySpawner_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)

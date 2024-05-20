@@ -23,6 +23,8 @@ public class EnemyShoot : MonoBehaviour
     {
         shootTimer = shootTimerMax;
         originalShootTimerMax = shootTimerMax;
+        specialBulletUpgradeList = new List<UpgradeSO>();
+        bulletsPerShot = 1;
     }
 
     private void Start()

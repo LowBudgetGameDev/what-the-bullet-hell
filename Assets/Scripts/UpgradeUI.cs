@@ -13,6 +13,8 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI counterText;
+    [SerializeField] private GameObject levelCounter;
+    [SerializeField] private TextMeshProUGUI levelText;
 
     private Button button;
 
@@ -26,6 +28,16 @@ public class UpgradeUI : MonoBehaviour
         nameText.text = upgrade.nameString;
         description.text = upgrade.description;
         counterText.text = "The Enemies Will Gain " + upgrade.counter.nameString;
+
+        if (!UpgradeManager.Instance.HasUnlockedUpgrade(upgrade))
+        {
+            levelCounter.SetActive(false);
+        }
+        else
+        {
+            levelCounter.SetActive(true);
+            levelText.text = UpgradeManager.Instance.GetLevelOfUpgrade(upgrade).ToString();
+        }
 
         button.onClick.AddListener(() =>
         {

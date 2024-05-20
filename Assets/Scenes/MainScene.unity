@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147bac00c82754e9ab1535c4b58856db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 5
 --- !u!95 &201374929
 Animator:
   serializedVersion: 5
@@ -479,7 +479,7 @@ MonoBehaviour:
   - {fileID: 5143429607385807319, guid: 95c7204bdf7334210a9198b3c3cb9c0a, type: 3}
   - {fileID: 5143429607385807319, guid: cf481f3632a4a456b89f12e6d7cb3f06, type: 3}
   - {fileID: 5143429607385807319, guid: 0eeffe3ae80dd4f5f91d42afddd20eee, type: 3}
-  enemySpawnCompareValues: 64000000460000005a00000064000000
+  enemySpawnCompareValues: 1e000000460000005a00000064000000
 --- !u!4 &309000729
 Transform:
   m_ObjectHideFlags: 0

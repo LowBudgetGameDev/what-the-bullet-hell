@@ -90,6 +90,11 @@ public class UpgradeManager : MonoBehaviour
         return unlockedUpgrades;
     }
 
+    public bool HasUnlockedUpgrade(UpgradeSO upgrade)
+    {
+        return unlockedUpgrades.Contains(upgrade);
+    }
+
     public bool CanUnlockUpgrades()
     {
         return upgradeLevelDictionary.Count < maxUnlockableUpgrades;

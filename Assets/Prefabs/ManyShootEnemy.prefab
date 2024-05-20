@@ -143,7 +143,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4748954883564159360, guid: ffd53c484e61b40eabaf243069c3d5d1, type: 3}
   numBullets: 12
   shootDamage: 1
-  shootTimerMax: 0.5
+  shootTimerMax: 1.5
 --- !u!1 &8308228450851051436
 GameObject:
   m_ObjectHideFlags: 0
