@@ -21,8 +21,12 @@ public class PlayerHealthUI : MonoBehaviour
     {
         healthSystem = GetComponent<HealthSystem>();
         healthAnimator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         healthSystem.OnHealthChanged += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
+        LevelManager.Instance.OnLevelUp += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
     }
 
     private void Update()
