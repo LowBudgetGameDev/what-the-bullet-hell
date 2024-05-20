@@ -35,11 +35,11 @@ public class PlayerController : MonoBehaviour
     {
         if (this == null) return;
 
-        FireRateUpgrade healthUpgrade = GetComponent<FireRateUpgrade>();
+        FireRateUpgrade fireRateUpgrade = GetComponent<FireRateUpgrade>();
 
-        if (healthUpgrade == null) return;
+        if (fireRateUpgrade == null) return;
 
-        shootTimerMax = originalShootTimerMax * healthUpgrade.GetFireRateMultiplier();
+        shootTimerMax = originalShootTimerMax * fireRateUpgrade.GetFireRateMultiplier();
         shootTimer = 0f;
     }
 

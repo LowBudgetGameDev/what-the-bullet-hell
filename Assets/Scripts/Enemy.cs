@@ -31,6 +31,16 @@ public class Enemy : MonoBehaviour
         movementSpeed *= Random.Range(0.9f, 1.1f);
     }
 
+    private void Start()
+    {
+        LevelManager.Instance.OnLevelUp += Enemy_OnLevelUp;
+    }
+
+    private void Enemy_OnLevelUp(object sender, EventArgs e)
+    {
+        Destroy(gameObject);
+    }
+
     private void FixedUpdate()
     {
         rigidbody2D.velocity = dirToPlayer * movementSpeed;
@@ -72,6 +82,8 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         if (GetComponent<HealthSystem>().GetHealth() == 0) LevelManager.Instance.GainXp(xpGained);
+
+        LevelManager.Instance.OnLevelUp -= Enemy_OnLevelUp;
 
         killAction();
     }

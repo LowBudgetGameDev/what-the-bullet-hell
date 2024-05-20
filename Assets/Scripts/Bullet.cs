@@ -24,6 +24,16 @@ public class Bullet : MonoBehaviour
         hideTimer = 5f;
     }
 
+    private void Start()
+    {
+        LevelManager.Instance.OnLevelUp += Bullet_OnLevelUp;
+    }
+
+    private void Bullet_OnLevelUp(object sender, System.EventArgs e)
+    {
+        ObjectPooler.Instance.DestoryWithPool(transform);
+    }
+
     private void Update()
     {
         if (shooter == null) ObjectPooler.Instance.DestoryWithPool(transform);
@@ -49,7 +59,7 @@ public class Bullet : MonoBehaviour
 
         foreach (BulletUpgrade upgrade in upgradeList)
         {
-            upgrade.OnCollided(collision, damageAmount, shooter, hasPiercing);
+            upgrade.OnCollided(collision, damageAmount, shooter, !hasPiercing);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet Despawner"))
