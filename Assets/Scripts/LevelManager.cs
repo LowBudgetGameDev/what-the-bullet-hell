@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     public event EventHandler OnLevelUp;
+    public event EventHandler OnXpIncreased;
 
     private int level;
     private int xp;
@@ -29,6 +30,8 @@ public class LevelManager : MonoBehaviour
         xp += amount;
 
         if (xp >= levelUpXp) LevelUp();
+
+        OnXpIncreased?.Invoke(this, EventArgs.Empty);
     }
 
     private void LevelUp()
@@ -39,6 +42,20 @@ public class LevelManager : MonoBehaviour
         levelUpXp += levelUpXpIncrease;
 
         OnLevelUp?.Invoke(this, EventArgs.Empty);
-        Debug.Log(level);
+    }
+
+    public int GetLevelUpXpAmount()
+    {
+        return levelUpXp;
+    }
+
+    public int GetXp()
+    {
+        return xp;
+    }
+
+    public int GetLevel()
+    {
+        return level;
     }
 }
