@@ -36,6 +36,7 @@ public class UpgradeManager : MonoBehaviour
     private List<UpgradeSO> unlockedCounters;
 
     private int maxUnlockableUpgrades = 3;
+    private int maxUpgradeLevel = 5;
 
     private void Awake()
     {
@@ -69,6 +70,8 @@ public class UpgradeManager : MonoBehaviour
             OnUpgradeUnlocked?.Invoke(this, new UpgradeUnlockedEventArgs { upgrade = upgrade });
         }
 
+        if (upgradeLevelDictionary[upgrade] == maxUpgradeLevel) return;
+
         upgradeLevelDictionary[upgrade]++;
         counterLevelDictionary[upgrade.counter]++;
 
@@ -77,6 +80,11 @@ public class UpgradeManager : MonoBehaviour
 
     public int GetLevelOfUpgrade(UpgradeSO upgrade)
     {
+        if (!upgradeLevelDictionary.ContainsKey(upgrade))
+        {
+            return 0;
+        }
+
         return upgradeLevelDictionary[upgrade];
     }
 
@@ -98,5 +106,10 @@ public class UpgradeManager : MonoBehaviour
     public bool CanUnlockUpgrades()
     {
         return upgradeLevelDictionary.Count < maxUnlockableUpgrades;
+    }
+
+    public bool CanLevelUpUpgrade(UpgradeSO upgrade)
+    {
+        return GetLevelOfUpgrade(upgrade) < maxUpgradeLevel;
     }
 }

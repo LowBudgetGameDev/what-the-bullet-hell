@@ -45,5 +45,7 @@ public class UpgradeUI : MonoBehaviour
 
             OnClick?.Invoke(this, EventArgs.Empty);
         });
+
+        if (!UpgradeManager.Instance.CanLevelUpUpgrade(upgrade)) button.interactable = false;
     }
 }
