@@ -29,7 +29,10 @@ public class HealthSystem : MonoBehaviour
         UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) =>
         {
             AddBonusHealth();
+            health = maxHealth;
         };
+
+        AddBonusHealth();
     }
 
     private void Update()

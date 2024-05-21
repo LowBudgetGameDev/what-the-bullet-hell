@@ -27,13 +27,14 @@ public class PlayerHealthUI : MonoBehaviour
     {
         healthSystem.OnHealthChanged += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
         LevelManager.Instance.OnLevelUp += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
+        UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) => { healthAnimator.SetTrigger("TookDamage"); };
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (updateRingTimer >= updateRingTimerMax) return;
 
-        updateRingTimer += Time.deltaTime;
+        updateRingTimer += Time.unscaledDeltaTime;
 
         if (updateRingTimer > updateRingTimerMax)
         {
