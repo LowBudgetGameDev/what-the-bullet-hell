@@ -68,13 +68,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetMouseButtonUp(0)) shootTimer = 0f;
+        if (shootTimer >= 0f) shootTimer -= Time.deltaTime;
 
-        if (!Input.GetMouseButton(0)) return;
-
-        shootTimer -= Time.deltaTime;
-
-        if (shootTimer < 0f)
+        if (shootTimer < 0f && Input.GetMouseButton(0))
         {
             OnShoot?.Invoke(this, EventArgs.Empty);
             shootTimer += shootTimerMax;
