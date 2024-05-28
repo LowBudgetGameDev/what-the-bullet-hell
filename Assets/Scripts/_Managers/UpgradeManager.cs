@@ -82,10 +82,20 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!upgradeLevelDictionary.ContainsKey(upgrade))
         {
-            return 0;
+            return GetLevelOfCounter(upgrade);
         }
 
         return upgradeLevelDictionary[upgrade];
+    }
+
+    public int GetLevelOfCounter(UpgradeSO counter)
+    {
+        if (!counterLevelDictionary.ContainsKey(counter))
+        {
+            return 0;
+        }
+
+        return counterLevelDictionary[counter];
     }
 
     public UpgradeSO GetUpgradeSO(Upgrade upgrade)

@@ -29,8 +29,8 @@ public class EnemyShoot : MonoBehaviour
 
     private void Start()
     {
-        UpgradeManager.Instance.OnUpgradeUnlocked += EnemyShoot_OnUpgradeUnlocked;
-        UpgradeManager.Instance.OnUpgradeLevelUp += EnemyShoot_OnUpgradeLevelUp;
+        AddBulletUpgrades();
+        AddExtraBulletStats();
     }
 
     private void DecreaseShootTimeMax()
@@ -45,7 +45,7 @@ public class EnemyShoot : MonoBehaviour
         shootTimer = 0f;
     }
 
-    private void EnemyShoot_OnUpgradeLevelUp(object sender, EventArgs e)
+    private void AddExtraBulletStats()
     {
         if (this == null) return;
 
@@ -60,14 +60,17 @@ public class EnemyShoot : MonoBehaviour
         DecreaseShootTimeMax();
     }
 
-    private void EnemyShoot_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
+    private void AddBulletUpgrades()
     {
-        if (e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun)) return;
+        foreach (UpgradeSO upgrade in UpgradeManager.Instance.GetUnlockedUpgrades())
+        {
+            if (upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun)) return;
 
-        specialBulletUpgradeList.Add(e.upgrade.counter);
+            specialBulletUpgradeList.Add(upgrade.counter);
+        }
     }
 
     private void Update()
