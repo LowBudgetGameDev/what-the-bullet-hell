@@ -26,6 +26,7 @@ public class UpgradeUI : MonoBehaviour
     public void SetUp(UpgradeSO upgrade)
     {
         nameText.text = upgrade.nameString;
+        icon.sprite = upgrade.icon;
         description.text = upgrade.description;
         counterText.text = "The Enemies Will Gain " + upgrade.counter.nameString;
 
