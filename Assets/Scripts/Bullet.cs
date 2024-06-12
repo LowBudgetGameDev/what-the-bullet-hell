@@ -9,12 +9,14 @@ public class Bullet : MonoBehaviour
 
     private float speed = 50f;
     private int damageAmount;
+    private int damageMultiplier;
 
     private float hideTimer;
 
     public void SetUp(Vector3 shootDir, int damageAmount, Transform shooter)
     {
         this.damageAmount = damageAmount;
+        damageMultiplier = (int) (transform.localScale.x / 0.5f);
         this.shooter = shooter;
 
         GetComponent<Rigidbody2D>().velocity = shootDir * speed;
@@ -49,7 +51,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.Damage(damageAmount);
+                healthSystem.Damage(damageAmount * damageMultiplier);
             }
 
             ObjectPooler.Instance.DestoryWithPool(transform);
@@ -59,7 +61,7 @@ public class Bullet : MonoBehaviour
 
         foreach (BulletUpgrade upgrade in upgradeList)
         {
-            upgrade.OnCollided(collision, damageAmount, shooter, !hasPiercing);
+            upgrade.OnCollided(collision, damageAmount * damageMultiplier, shooter, !hasPiercing);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet Despawner"))
