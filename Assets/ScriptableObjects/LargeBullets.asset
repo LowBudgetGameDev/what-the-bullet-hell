@@ -16,6 +16,6 @@ MonoBehaviour:
   levelUpAmount: 0.2
   script: {fileID: 11500000, guid: ed7edf1e0e3e345ba8fbe5d9788c6267, type: 3}
   counter: {fileID: 11400000, guid: 24de742d6998a4f6f83034b2251d89ec, type: 2}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 43ea95e1540ac411caa9e256d85f1999, type: 3}
   nameString: Large Bullets
   description: Your bullets become larger making it easier to hit enemies.

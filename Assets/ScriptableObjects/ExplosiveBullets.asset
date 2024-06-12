@@ -16,6 +16,6 @@ MonoBehaviour:
   levelUpAmount: 3
   script: {fileID: 11500000, guid: 3bf821f13c1fe4634a160512ab4c2208, type: 3}
   counter: {fileID: 11400000, guid: 0fece7c39653c42e5966b6b2e41a06e1, type: 2}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e3e1c3e46937e41be921024c7fa79a77, type: 3}
   nameString: Explosive Bullets
   description: All bullets you shoot will explode and damage all enemies around it.
