@@ -18,13 +18,10 @@ public class UpgradeUI : MonoBehaviour
 
     private Button button;
 
-    private void Awake()
-    {
-        button = GetComponent<Button>();
-    }
-
     public void SetUp(UpgradeSO upgrade)
     {
+        button = GetComponent<Button>();
+
         nameText.text = upgrade.nameString;
         icon.sprite = upgrade.icon;
         description.text = upgrade.description;

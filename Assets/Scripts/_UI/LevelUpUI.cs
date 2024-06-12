@@ -24,7 +24,7 @@ public class LevelUpUI : MonoBehaviour
 
         LevelManager.Instance.OnLevelUp += (object sender, EventArgs e) => { Show(); };
 
-        Hide();
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -86,7 +86,10 @@ public class LevelUpUI : MonoBehaviour
     public void Hide()
     {
         animator.SetTrigger("Close");
-        gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        FunctionTimer.CreateFunctionTimer(() =>
+        {
+            gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }, 2f);
     }
 }
