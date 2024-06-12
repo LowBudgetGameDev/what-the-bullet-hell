@@ -43,7 +43,7 @@ public class FunctionTimer
     {
         if (isDestroyed) return;
 
-        timer -= Time.deltaTime;
+        timer -= Time.unscaledDeltaTime;
 
         if (timer < 0f)
         {
