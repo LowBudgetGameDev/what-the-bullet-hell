@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class PlayerUpgrades : MonoBehaviour
 {
@@ -17,9 +16,7 @@ public class PlayerUpgrades : MonoBehaviour
             e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
             e.upgrade == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun))
         {
-            MonoScript upgradeScript = (MonoScript)e.upgrade.script;
-
-            gameObject.AddComponent(upgradeScript.GetClass());
+            gameObject.AddComponent(e.upgrade.GetScriptType());
         }
     }
 }

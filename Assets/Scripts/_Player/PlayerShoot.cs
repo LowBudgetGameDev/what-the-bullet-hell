@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -59,11 +58,9 @@ public class PlayerShoot : MonoBehaviour
 
             foreach (UpgradeSO upgrade in specialBulletUpgradeList)
             {
-                MonoScript upgradeScript = (MonoScript)upgrade.script;
+                if (bullet.gameObject.GetComponent(upgrade.GetScriptType()) != null) continue;
 
-                if (bullet.gameObject.GetComponent(upgradeScript.GetClass()) != null) continue;
-
-                bullet.gameObject.AddComponent(upgradeScript.GetClass());
+                bullet.gameObject.AddComponent(upgrade.GetScriptType());
             }
 
             Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();

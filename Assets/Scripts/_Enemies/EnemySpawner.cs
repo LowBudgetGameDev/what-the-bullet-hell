@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -107,9 +106,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (UpgradeSO upgrade in counterUpgradesList)
         {
-            MonoScript upgradeScript = (MonoScript)upgrade.script;
-
-            enemy.gameObject.AddComponent(upgradeScript.GetClass());
+            enemy.gameObject.AddComponent(upgrade.GetScriptType());
         }
 
         enemy.GetComponent<Enemy>().SetUp(playerTransform, () => { numEnemies--; });

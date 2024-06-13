@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
@@ -95,11 +94,9 @@ public class EnemyShoot : MonoBehaviour
 
             foreach (UpgradeSO upgrade in specialBulletUpgradeList)
             {
-                MonoScript upgradeScript = (MonoScript)upgrade.script;
+                if (bullet.gameObject.GetComponent(upgrade.GetScriptType()) != null) continue;
 
-                if (bullet.gameObject.GetComponent(upgradeScript.GetClass()) != null) continue;
-
-                bullet.gameObject.AddComponent(upgradeScript.GetClass());
+                bullet.gameObject.AddComponent(upgrade.GetScriptType());
             }
 
             float pointAngleDegrees = UtilsClass.VectorToAngleDegrees(transform.up);

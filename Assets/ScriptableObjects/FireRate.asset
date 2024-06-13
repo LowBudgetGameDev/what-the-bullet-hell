@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrade: 1
   levelUpAmount: 0.1
-  script: {fileID: 11500000, guid: b431cbc3f303945129644e80d5149690, type: 3}
+  scriptName: FireRateUpgrade
   counter: {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}
   icon: {fileID: 21300000, guid: 47636c5b510d74f8cb1787ec1214cdeb, type: 3}
   nameString: Shoot Speed
