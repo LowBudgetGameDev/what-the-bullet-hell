@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public enum Upgrade
-    {
-        Health,
-        Fire_Rate,
-        Life_Steal,
-        Explosive_Bullets,
-        Poison,
-        Piercing_Bullets,
-        Large_Bullets,
-        Shotgun
-    }
-
     public class UpgradeUnlockedEventArgs : EventArgs
     {
         public UpgradeSO upgrade;
@@ -28,9 +16,6 @@ public class UpgradeManager : MonoBehaviour
     public event EventHandler<UpgradeUnlockedEventArgs> OnUpgradeUnlocked;
 
     private Dictionary<Upgrade, UpgradeSO> upgradeSOConversion;
-
-    private Dictionary<UpgradeSO, int> upgradeLevelDictionary;
-    private Dictionary<UpgradeSO, int> counterLevelDictionary;
 
     private List<UpgradeSO> unlockedUpgrades;
     private List<UpgradeSO> unlockedCounters;
@@ -51,51 +36,24 @@ public class UpgradeManager : MonoBehaviour
             upgradeSOConversion.Add(upgrade.upgrade, upgrade);
         }
 
-        upgradeLevelDictionary = new Dictionary<UpgradeSO, int>();
-        counterLevelDictionary = new Dictionary<UpgradeSO, int>();
-
         unlockedUpgrades = new List<UpgradeSO>();
         unlockedCounters = new List<UpgradeSO>();
     }
 
     public void LevelUpUpgrade(UpgradeSO upgrade)
     {
-        if (!upgradeLevelDictionary.ContainsKey(upgrade))
+        if (!unlockedUpgrades.Contains(upgrade))
         {
-            upgradeLevelDictionary.Add(upgrade, 0);
-            counterLevelDictionary.Add(upgrade.counter, 0);
             unlockedUpgrades.Add(upgrade);
             unlockedCounters.Add(upgrade.counter);
 
             OnUpgradeUnlocked?.Invoke(this, new UpgradeUnlockedEventArgs { upgrade = upgrade });
         }
 
-        if (upgradeLevelDictionary[upgrade] == maxUpgradeLevel) return;
-
-        upgradeLevelDictionary[upgrade]++;
-        counterLevelDictionary[upgrade.counter]++;
+        upgrade.LevelUp();
+        upgrade.counter.LevelUp();
 
         OnUpgradeLevelUp?.Invoke(this, EventArgs.Empty);
-    }
-
-    public int GetLevelOfUpgrade(UpgradeSO upgrade)
-    {
-        if (!upgradeLevelDictionary.ContainsKey(upgrade))
-        {
-            return GetLevelOfCounter(upgrade);
-        }
-
-        return upgradeLevelDictionary[upgrade];
-    }
-
-    public int GetLevelOfCounter(UpgradeSO counter)
-    {
-        if (!counterLevelDictionary.ContainsKey(counter))
-        {
-            return 0;
-        }
-
-        return counterLevelDictionary[counter];
     }
 
     public UpgradeSO GetUpgradeSO(Upgrade upgrade)
@@ -115,11 +73,6 @@ public class UpgradeManager : MonoBehaviour
 
     public bool CanUnlockUpgrades()
     {
-        return upgradeLevelDictionary.Count < maxUnlockableUpgrades;
-    }
-
-    public bool CanLevelUpUpgrade(UpgradeSO upgrade)
-    {
-        return GetLevelOfUpgrade(upgrade) < maxUpgradeLevel;
+        return unlockedUpgrades.Count < maxUnlockableUpgrades;
     }
 }
