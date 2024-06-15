@@ -34,7 +34,7 @@ public class UpgradeUI : MonoBehaviour
         else
         {
             levelCounter.SetActive(true);
-            levelText.text = UpgradeManager.Instance.GetLevelOfUpgrade(upgrade).ToString();
+            levelText.text = upgrade.GetLevel().ToString();
         }
 
         button.onClick.AddListener(() =>
@@ -44,6 +44,6 @@ public class UpgradeUI : MonoBehaviour
             OnClick?.Invoke(this, EventArgs.Empty);
         });
 
-        if (!UpgradeManager.Instance.CanLevelUpUpgrade(upgrade)) button.interactable = false;
+        if (upgrade.IsMaxLevel()) button.interactable = false;
     }
 }

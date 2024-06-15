@@ -45,10 +45,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnemySpawner_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
     {
-        if (e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun))
+        if (e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Fire_Rate) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets) ||
+            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun))
         {
             counterUpgradesList.Add(e.upgrade.counter);
         }

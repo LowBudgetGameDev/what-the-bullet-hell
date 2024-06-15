@@ -14,17 +14,17 @@ public class ExplosiveBullet : BulletUpgrade
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Explosive_Bullets);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Explosive_Bullets);
     }
 
     public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Explosive_Bullets);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Explosive_Bullets);
 
         Transform particles = Instantiate(explosionParticles, transform.position, Quaternion.identity);
-        particles.localScale *= 0.25f * UpgradeManager.Instance.GetLevelOfUpgrade(upgrade);
+        particles.localScale *= 0.25f * upgrade.GetLevel();
 
-        float explosionRadius = UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+        float explosionRadius = upgrade.GetLevel() * upgrade.levelUpAmount;
 
         Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 

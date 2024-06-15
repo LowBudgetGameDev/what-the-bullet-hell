@@ -8,12 +8,12 @@ public class LifeStealBullet : BulletUpgrade
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Life_Steal);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Life_Steal);
     }
 
     public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Life_Steal);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Life_Steal);
 
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
@@ -21,7 +21,7 @@ public class LifeStealBullet : BulletUpgrade
 
             float randomFloat = Random.Range(0f, 1f);
 
-            if (randomFloat < UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount)
+            if (randomFloat < upgrade.GetLevel() * upgrade.levelUpAmount)
             {
                 shooter.GetComponent<HealthSystem>().Heal(damageAmount);
             }

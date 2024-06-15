@@ -8,13 +8,13 @@ public class ShotgunUpgrade : MonoBehaviour
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun);
     }
 
     public int GetBulletAmount()
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun);
 
-        return (int) (UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount);
+        return (int) (upgrade.GetLevel() * upgrade.levelUpAmount);
     }
 }

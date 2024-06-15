@@ -66,6 +66,11 @@ public class UpgradeManager : MonoBehaviour
         return unlockedUpgrades;
     }
 
+    public List<UpgradeSO> GetUnlockedCounters()
+    {
+        return unlockedCounters;
+    }
+
     public bool HasUnlockedUpgrade(UpgradeSO upgrade)
     {
         return unlockedUpgrades.Contains(upgrade);

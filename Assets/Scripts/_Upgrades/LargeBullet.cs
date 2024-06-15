@@ -8,13 +8,13 @@ public class LargeBullet : MonoBehaviour
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets);
     }
 
     public float GetBulletScaledSize()
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets);
 
-        return UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+        return upgrade.GetLevel() * upgrade.levelUpAmount;
     }
 }

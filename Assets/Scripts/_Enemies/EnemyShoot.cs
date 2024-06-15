@@ -63,10 +63,10 @@ public class EnemyShoot : MonoBehaviour
     {
         foreach (UpgradeSO upgrade in UpgradeManager.Instance.GetUnlockedUpgrades())
         {
-            if (upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun)) return;
+            if (upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Fire_Rate) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets) ||
+                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun)) return;
 
             specialBulletUpgradeList.Add(upgrade.counter);
         }

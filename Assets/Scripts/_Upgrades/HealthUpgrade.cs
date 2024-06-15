@@ -8,13 +8,13 @@ public class HealthUpgrade : MonoBehaviour
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health);
     }
 
     public int GetExtraHealthAmount()
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health);
 
-        return (int) (UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount);
+        return (int) (upgrade.GetLevel() * upgrade.levelUpAmount);
     }
 }

@@ -29,7 +29,7 @@ public class LevelUpUI : MonoBehaviour
 
     private void OnEnable()
     {
-        UpgradeManager.Upgrade[] possibleUpgrades = (UpgradeManager.Upgrade[])Enum.GetValues(typeof(UpgradeManager.Upgrade));
+        Upgrade[] possibleUpgrades = (Upgrade[])Enum.GetValues(typeof(Upgrade));
 
         if (!UpgradeManager.Instance.CanUnlockUpgrades())
         {
@@ -47,7 +47,7 @@ public class LevelUpUI : MonoBehaviour
             return;
         }
 
-        List<UpgradeManager.Upgrade> possibleUpgradesList = new List<UpgradeManager.Upgrade>(possibleUpgrades);
+        List<Upgrade> possibleUpgradesList = new List<Upgrade>(possibleUpgrades);
 
         for (int i = 0; i < 3; i++)
         {

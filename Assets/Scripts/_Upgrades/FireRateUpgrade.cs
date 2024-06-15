@@ -8,13 +8,13 @@ public class FireRateUpgrade : MonoBehaviour
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Fire_Rate);
     }
 
     public float GetFireRateMultiplier()
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Fire_Rate);
 
-        return 1f - UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+        return 1f - upgrade.GetLevel() * upgrade.levelUpAmount;
     }
 }

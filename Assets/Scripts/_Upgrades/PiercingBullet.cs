@@ -14,12 +14,12 @@ public class PiercingBullet : BulletUpgrade
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Piercing_Bullets);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Piercing_Bullets);
     }
 
     public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Piercing_Bullets);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Piercing_Bullets);
 
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
@@ -28,7 +28,7 @@ public class PiercingBullet : BulletUpgrade
 
         enemiesHit++;
 
-        int maxEnemyHit = (int) (UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount);
+        int maxEnemyHit = (int) (upgrade.GetLevel() * upgrade.levelUpAmount);
 
         if (enemiesHit > maxEnemyHit) ObjectPooler.Instance.DestoryWithPool(transform);
     }

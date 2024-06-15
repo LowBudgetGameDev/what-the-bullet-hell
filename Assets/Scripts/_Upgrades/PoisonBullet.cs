@@ -8,16 +8,16 @@ public class PoisonBullet : BulletUpgrade
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Poison);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
     }
 
     public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Poison);
+        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
 
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
-            float poisonDuration = UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+            float poisonDuration = upgrade.GetLevel() * upgrade.levelUpAmount;
 
             healthSystem.Poison(1f, poisonDuration);
         }
