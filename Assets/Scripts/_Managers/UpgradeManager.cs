@@ -21,7 +21,6 @@ public class UpgradeManager : MonoBehaviour
     private List<UpgradeSO> unlockedCounters;
 
     private int maxUnlockableUpgrades = 3;
-    private int maxUpgradeLevel = 5;
 
     private void Awake()
     {
@@ -34,6 +33,7 @@ public class UpgradeManager : MonoBehaviour
         foreach (UpgradeSO upgrade in upgradeListSO.list)
         {
             upgradeSOConversion.Add(upgrade.upgrade, upgrade);
+            upgrade.CreateUpgradeClass();
         }
 
         unlockedUpgrades = new List<UpgradeSO>();
@@ -51,7 +51,7 @@ public class UpgradeManager : MonoBehaviour
         }
 
         upgrade.LevelUp();
-        upgrade.counter.LevelUp();
+        upgrade.counter.CounterLevelUp();
 
         OnUpgradeLevelUp?.Invoke(this, EventArgs.Empty);
     }

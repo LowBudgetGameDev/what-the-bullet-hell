@@ -9,6 +9,7 @@ public class UpgradeSO : ScriptableObject
     private class UpgradeClass
     {
         public int Level { get; private set; }
+        public int CounterLevel { get; private set; }
         private int maxLevel = 5;
 
         public void IncreaseLevel()
@@ -18,9 +19,21 @@ public class UpgradeSO : ScriptableObject
             Level++;
         }
 
+        public void IncreaseCounterLevel()
+        {
+            if (CounterLevel == maxLevel) return;
+
+            CounterLevel++;
+        }
+
         public bool IsMaxLevel()
         {
             return Level == maxLevel;
+        }
+
+        public bool IsMaxCounterLevel()
+        {
+            return CounterLevel == maxLevel;
         }
     }
 
@@ -36,6 +49,11 @@ public class UpgradeSO : ScriptableObject
 
     private UpgradeClass upgradeClass = new UpgradeClass();
 
+    public void CreateUpgradeClass()
+    {
+        upgradeClass = new UpgradeClass();
+    }
+
     public Type GetScriptType()
     {
         return Type.GetType(scriptName);
@@ -46,14 +64,29 @@ public class UpgradeSO : ScriptableObject
         return upgradeClass.Level;
     }
 
+    public int GetCounterLevel()
+    {
+        return upgradeClass.CounterLevel;
+    }
+
     public void LevelUp()
     {
         upgradeClass.IncreaseLevel();
     }
 
+    public void CounterLevelUp()
+    {
+        upgradeClass.IncreaseCounterLevel();
+    }
+
     public bool IsMaxLevel()
     {
         return upgradeClass.IsMaxLevel();
+    }
+
+    public bool IsMaxCounterLevel()
+    {
+        return upgradeClass.IsMaxCounterLevel();
     }
 
     public float GetUpgradeAmount()
