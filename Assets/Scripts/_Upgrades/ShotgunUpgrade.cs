@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunUpgrade : MonoBehaviour
+public class ShotgunUpgrade : MonoBehaviour, IUpgrade
 {
     private UpgradeSO upgrade;
+    private bool isCounter;
 
     private void Start()
     {
@@ -15,6 +16,32 @@ public class ShotgunUpgrade : MonoBehaviour
     {
         if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun);
 
-        return (int) (upgrade.GetLevel() * upgrade.levelUpAmount);
+        return (int) upgrade.GetUpgradeAmount(isCounter);
+    }
+
+    public void OnShoot(Transform bullet)
+    {
+
+    }
+
+    public void SetIsCounter(bool isCounter)
+    {
+        this.isCounter = isCounter;
+    }
+
+    public void OnAdded()
+    {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun);
+
+        if (transform == null) return;
+
+        if (!isCounter)
+        {
+            GetComponent<PlayerShoot>().SetBulletsPerShot((int) upgrade.GetUpgradeAmount());
+        }
+        else
+        {
+            GetComponent<EnemyShoot>().SetBulletsPerShot((int) upgrade.GetCounterAmount());
+        }
     }
 }

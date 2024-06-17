@@ -12,5 +12,11 @@ public class EnemyUpgrades : MonoBehaviour
         {
             gameObject.AddComponent(counter.GetScriptType());
         }
+
+        foreach (IUpgrade upgrade in GetComponents<IUpgrade>())
+        {
+            upgrade.SetIsCounter(true);
+            upgrade.OnAdded();
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private BulletUpgrade[] upgradeList;
+    private IBulletUpgrade[] upgradeList;
     private Transform shooter;
 
     private float speed = 50f;
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
         GetComponent<Rigidbody2D>().velocity = shootDir * speed;
 
-        upgradeList = GetComponents<BulletUpgrade>();
+        upgradeList = GetComponents<IBulletUpgrade>();
 
         hideTimer = 5f;
     }
@@ -57,9 +57,9 @@ public class Bullet : MonoBehaviour
             ObjectPooler.Instance.DestoryWithPool(transform);
         }
 
-        bool hasPiercing = TryGetComponent(out PiercingBullet piercing);
+        bool hasPiercing = TryGetComponent(out PiercingBullet.PiercingBulletUpgrade piercing);
 
-        foreach (BulletUpgrade upgrade in upgradeList)
+        foreach (IBulletUpgrade upgrade in upgradeList)
         {
             upgrade.OnCollided(collision, damageAmount * damageMultiplier, shooter, !hasPiercing);
         }

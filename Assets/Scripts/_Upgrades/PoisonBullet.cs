@@ -2,26 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoisonBullet : BulletUpgrade
+public class PoisonBullet : MonoBehaviour, IUpgrade
 {
+    public class PoisonBulletUpgrade : MonoBehaviour, IBulletUpgrade
+    {
+        private UpgradeSO upgrade;
+        private bool isCounter;
+
+        public void Setup(UpgradeSO upgrade, bool isCounter)
+        {
+            this.upgrade = upgrade;
+            this.isCounter = isCounter;
+        }
+
+        public void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
+        {
+            if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
+
+            if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
+            {
+                float poisonDuration = upgrade.GetUpgradeAmount(isCounter);
+
+                healthSystem.Poison(1f, poisonDuration);
+            }
+
+            if (canDestroy) ObjectPooler.Instance.DestoryWithPool(transform);
+        }
+    }
+
     private UpgradeSO upgrade;
+    private bool isCounter;
 
     private void Start()
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
     }
 
-    public override void OnCollided(Collider2D collision, int damageAmount, Transform shooter, bool canDestroy)
+    public void OnShoot(Transform bullet)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
+        if (bullet.GetComponent<PoisonBulletUpgrade>() != null) return;
 
-        if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
-        {
-            float poisonDuration = upgrade.GetLevel() * upgrade.levelUpAmount;
+        PoisonBulletUpgrade upgradeScript = bullet.gameObject.AddComponent<PoisonBulletUpgrade>();
 
-            healthSystem.Poison(1f, poisonDuration);
-        }
+        upgradeScript.Setup(upgrade, isCounter);
+    }
 
-        if (canDestroy) ObjectPooler.Instance.DestoryWithPool(transform);
+    public void SetIsCounter(bool isCounter)
+    {
+        this.isCounter = isCounter;
+    }
+
+    public void OnAdded()
+    {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
     }
 }

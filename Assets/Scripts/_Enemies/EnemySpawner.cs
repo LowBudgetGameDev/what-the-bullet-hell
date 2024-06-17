@@ -14,16 +14,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> enemyPrefabList;
     [SerializeField] private int[] enemySpawnCompareValues;
 
-    private List<UpgradeSO> counterUpgradesList;
-
     private float spawnTimer;
     private int numEnemies;
     private Vector2 cameraSize;
 
     private void Awake()
     {
-        counterUpgradesList = new List<UpgradeSO>();
-
         spawnTimer = spawnTimerMax;
 
         Camera mainCamera = UtilsClass.GetMainCamera();
@@ -34,24 +30,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        UpgradeManager.Instance.OnUpgradeUnlocked += EnemySpawner_OnUpgradeUnlocked;
         LevelManager.Instance.OnLevelUp += EnemySpawner_OnLevelUp;
     }
 
     private void EnemySpawner_OnLevelUp(object sender, System.EventArgs e)
     {
         spawnTimerMax -= 0.03f;
-    }
-
-    private void EnemySpawner_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
-    {
-        if (e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Fire_Rate) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets) ||
-            e.upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(Upgrade.Shotgun))
-        {
-            counterUpgradesList.Add(e.upgrade.counter);
-        }
     }
 
     private void Update()
@@ -103,11 +87,6 @@ public class EnemySpawner : MonoBehaviour
         Transform enemy = Instantiate(enemyPrefabList[enemyIndex],
                 spawnPosition,
                 Quaternion.identity);
-
-        foreach (UpgradeSO upgrade in counterUpgradesList)
-        {
-            enemy.gameObject.AddComponent(upgrade.GetScriptType());
-        }
 
         enemy.GetComponent<Enemy>().SetUp(playerTransform, () => { numEnemies--; });
 

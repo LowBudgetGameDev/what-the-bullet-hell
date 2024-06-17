@@ -38,7 +38,6 @@ public class UpgradeSO : ScriptableObject
     }
 
     public Upgrade upgrade;
-    public UpgradeType upgradeType;
     public float startAmount;
     public float levelUpAmount;
     public string scriptName;
@@ -69,6 +68,11 @@ public class UpgradeSO : ScriptableObject
         return upgradeClass.CounterLevel;
     }
 
+    public int GetLevel(bool isCounter)
+    {
+        return !isCounter ? GetLevel() : GetCounterLevel();
+    }
+
     public void LevelUp()
     {
         upgradeClass.IncreaseLevel();
@@ -89,9 +93,24 @@ public class UpgradeSO : ScriptableObject
         return upgradeClass.IsMaxCounterLevel();
     }
 
+    public bool IsMaxLevel(bool isCounter)
+    {
+        return !isCounter ? IsMaxLevel() : IsMaxCounterLevel();
+    }
+
     public float GetUpgradeAmount()
     {
         return startAmount + upgradeClass.Level * levelUpAmount;
+    }
+
+    public float GetCounterAmount()
+    {
+        return startAmount + upgradeClass.CounterLevel * levelUpAmount;
+    }
+
+    public float GetUpgradeAmount(bool isCounter)
+    {
+        return !isCounter ? GetUpgradeAmount() : GetCounterAmount();
     }
 }
 
@@ -105,10 +124,4 @@ public enum Upgrade
     Piercing_Bullets,
     Large_Bullets,
     Shotgun
-}
-
-public enum UpgradeType
-{
-    Shooter,
-    Bullet
 }
