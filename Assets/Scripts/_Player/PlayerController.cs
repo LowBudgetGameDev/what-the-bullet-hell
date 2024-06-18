@@ -21,25 +21,9 @@ public class PlayerController : MonoBehaviour
         originalShootTimerMax = shootTimerMax;
     }
 
-    private void Start()
+    public void DecreaseShootTimeMax(float multiplier)
     {
-        UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) =>
-        {
-            DecreaseShootTimeMax();
-        };
-
-        DecreaseShootTimeMax();
-    }
-
-    private void DecreaseShootTimeMax()
-    {
-        if (this == null) return;
-
-        FireRateUpgrade fireRateUpgrade = GetComponent<FireRateUpgrade>();
-
-        if (fireRateUpgrade == null) return;
-
-        shootTimerMax = originalShootTimerMax * fireRateUpgrade.GetFireRateMultiplier();
+        shootTimerMax = originalShootTimerMax * multiplier;
         shootTimer = 0f;
     }
 

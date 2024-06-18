@@ -2,19 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthUpgrade : MonoBehaviour
+public class HealthUpgrade : MonoBehaviour, IUpgrade
 {
     private UpgradeSO upgrade;
+    private bool isCounter;
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health);
     }
 
-    public int GetExtraHealthAmount()
+    public void OnShoot(Transform bullet)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health);
+        
+    }
 
-        return (int) (UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount);
+    public void SetIsCounter(bool isCounter)
+    {
+        this.isCounter = isCounter;
+    }
+
+    public void OnAdded()
+    {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Health);
+
+        if (transform == null) return;
+
+        GetComponent<HealthSystem>().AddBonusHealth((int)upgrade.GetUpgradeAmount(isCounter));
     }
 }

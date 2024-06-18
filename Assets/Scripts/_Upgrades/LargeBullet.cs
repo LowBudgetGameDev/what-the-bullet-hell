@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LargeBullet : MonoBehaviour
+public class LargeBullet : MonoBehaviour, IUpgrade
 {
     private UpgradeSO upgrade;
+    private bool isCounter;
 
     private void Start()
     {
-        upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets);
     }
 
-    public float GetBulletScaledSize()
+    public void OnShoot(Transform bullet)
     {
-        if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets);
+        bullet.localScale = new Vector3(upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f, upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f, upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f);
+    }
 
-        return UpgradeManager.Instance.GetLevelOfUpgrade(upgrade) * upgrade.levelUpAmount;
+    public void SetIsCounter(bool isCounter)
+    {
+        this.isCounter = isCounter;
+    }
+
+    public void OnAdded()
+    {
+        upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets);
     }
 }

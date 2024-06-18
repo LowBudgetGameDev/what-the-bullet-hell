@@ -12,64 +12,25 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private float shootTimerMax = 1f;
     private float originalShootTimerMax;
 
-    private List<UpgradeSO> specialBulletUpgradeList;
-
     private float shootTimer = 0f;
-    private float sizeMultiplier;
     private int bulletsPerShot;
 
     private void Awake()
     {
         shootTimer = shootTimerMax;
         originalShootTimerMax = shootTimerMax;
-        specialBulletUpgradeList = new List<UpgradeSO>();
         bulletsPerShot = 1;
     }
 
-    private void Start()
+    public void DecreaseShootTimeMax(float multiplier)
     {
-        AddBulletUpgrades();
-        AddExtraBulletStats();
-    }
-
-    private void DecreaseShootTimeMax()
-    {
-        if (this == null) return;
-
-        FireRateUpgrade fireRateUpgrade = GetComponent<FireRateUpgrade>();
-
-        if (fireRateUpgrade == null) return;
-
-        shootTimerMax = originalShootTimerMax * fireRateUpgrade.GetFireRateMultiplier();
+        shootTimerMax = originalShootTimerMax * multiplier;
         shootTimer = 0f;
     }
 
-    private void AddExtraBulletStats()
+    public void SetBulletsPerShot(int amount)
     {
-        if (this == null) return;
-
-        LargeBullet largeBulletUpgrade = GetComponent<LargeBullet>();
-
-        if (largeBulletUpgrade != null) sizeMultiplier = largeBulletUpgrade.GetBulletScaledSize();
-
-        ShotgunUpgrade shotgunUpgrade = GetComponent<ShotgunUpgrade>();
-
-        if (shotgunUpgrade != null) bulletsPerShot = shotgunUpgrade.GetBulletAmount();
-
-        DecreaseShootTimeMax();
-    }
-
-    private void AddBulletUpgrades()
-    {
-        foreach (UpgradeSO upgrade in UpgradeManager.Instance.GetUnlockedUpgrades())
-        {
-            if (upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Health) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Fire_Rate) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Large_Bullets) ||
-                upgrade.counter == UpgradeManager.Instance.GetUpgradeSO(UpgradeManager.Upgrade.Shotgun)) return;
-
-            specialBulletUpgradeList.Add(upgrade.counter);
-        }
+        bulletsPerShot = amount;
     }
 
     private void Update()
@@ -90,13 +51,9 @@ public class EnemyShoot : MonoBehaviour
         {
             Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);
 
-            bullet.localScale = new Vector3(sizeMultiplier / 2 + 0.5f, sizeMultiplier / 2 + 0.5f, sizeMultiplier / 2 + 0.5f);
-
-            foreach (UpgradeSO upgrade in specialBulletUpgradeList)
+            foreach (IUpgrade upgrade in GetComponents<IUpgrade>())
             {
-                if (bullet.gameObject.GetComponent(upgrade.GetScriptType()) != null) continue;
-
-                bullet.gameObject.AddComponent(upgrade.GetScriptType());
+                upgrade.OnShoot(bullet);
             }
 
             float pointAngleDegrees = UtilsClass.VectorToAngleDegrees(transform.up);

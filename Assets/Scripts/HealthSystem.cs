@@ -28,11 +28,8 @@ public class HealthSystem : MonoBehaviour
     {
         UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) =>
         {
-            AddBonusHealth();
-            health = maxHealth;
+            Heal(100);
         };
-
-        AddBonusHealth();
     }
 
     private void Update()
@@ -49,15 +46,9 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    private void AddBonusHealth()
+    public void AddBonusHealth(int amount)
     {
-        if (this == null) return;
-
-        HealthUpgrade healthUpgrade = GetComponent<HealthUpgrade>();
-
-        if (healthUpgrade == null) return;
-
-        maxHealth = originalMaxHealth + healthUpgrade.GetExtraHealthAmount();
+        maxHealth = originalMaxHealth + amount;
         health = maxHealth;
     }
 
