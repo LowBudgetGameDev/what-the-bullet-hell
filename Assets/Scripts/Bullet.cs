@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private IBulletUpgrade[] upgradeList;
     private Transform shooter;
 
-    private float speed = 50f;
+    private float speed = 30f;
     private int damageAmount;
     private int damageMultiplier;
 
