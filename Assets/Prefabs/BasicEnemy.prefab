@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3079460248605982414}
   - component: {fileID: 3758502367775057618}
   - component: {fileID: -2731648121124030346}
+  - component: {fileID: -4033376851545503334}
   m_Layer: 8
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -140,6 +141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e68760f237f4952854d6ee31301fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4033376851545503334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4417617067117030344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11604fe784f3405f99cdc1512a4d1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageParticles: {fileID: 4692114453500280415, guid: 5d9b5d79e5f63489b90c20eee404450e, type: 3}
 --- !u!1 &5218227734138076043
 GameObject:
   m_ObjectHideFlags: 0

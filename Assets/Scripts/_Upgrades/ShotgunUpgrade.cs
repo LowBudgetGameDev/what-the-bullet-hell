@@ -41,7 +41,7 @@ public class ShotgunUpgrade : MonoBehaviour, IUpgrade
         }
         else
         {
-            GetComponent<EnemyShoot>().SetBulletsPerShot((int) upgrade.GetCounterAmount());
+            GetComponent<EnemyShoot>()?.SetBulletsPerShot((int) upgrade.GetCounterAmount());
         }
     }
 }

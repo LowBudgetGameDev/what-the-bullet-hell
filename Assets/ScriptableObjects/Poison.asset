@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Poison
   m_EditorClassIdentifier: 
   upgrade: 4
+  startAmount: 0
   levelUpAmount: 3
   scriptName: PoisonBullet
   counter: {fileID: 11400000, guid: 5d7528194bcc04061908ffdadee836fa, type: 2}
   icon: {fileID: 21300000, guid: 8180f2a5abf15467b8131d018150ad2e, type: 3}
   nameString: Poison
-  description: Yout bullets deal continuous damage to enemies for some time.
+  description: Your bullets deal continuous damage to enemies for some time.

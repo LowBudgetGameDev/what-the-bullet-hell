@@ -40,7 +40,7 @@ public class FireRateUpgrade : MonoBehaviour, IUpgrade
         }
         else
         {
-            GetComponent<EnemyShoot>().DecreaseShootTimeMax(upgrade.GetCounterAmount());
+            GetComponent<EnemyShoot>()?.DecreaseShootTimeMax(upgrade.GetCounterAmount());
         }
     }
 }
