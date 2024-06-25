@@ -21,7 +21,7 @@ public class ShotgunUpgrade : MonoBehaviour, IUpgrade
 
     public void OnShoot(Transform bullet)
     {
-
+        //bullet.localScale = new Vector3(-upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f, -upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f, -upgrade.GetUpgradeAmount(isCounter) / 2 + 0.5f);
     }
 
     public void SetIsCounter(bool isCounter)

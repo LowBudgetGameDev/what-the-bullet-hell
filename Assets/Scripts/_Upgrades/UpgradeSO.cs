@@ -100,12 +100,12 @@ public class UpgradeSO : ScriptableObject
 
     public float GetUpgradeAmount()
     {
-        return startAmount + upgradeClass.Level * levelUpAmount;
+        return startAmount + (upgradeClass.Level - 1) * levelUpAmount;
     }
 
     public float GetCounterAmount()
     {
-        return startAmount + upgradeClass.CounterLevel * levelUpAmount;
+        return startAmount + (upgradeClass.CounterLevel - 1) * levelUpAmount;
     }
 
     public float GetUpgradeAmount(bool isCounter)

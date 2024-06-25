@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     {
         this.damageAmount = damageAmount;
         damageMultiplier = (int) (transform.localScale.x / 0.5f);
+        damageMultiplier = Mathf.Clamp(damageMultiplier, 1, 99);
         this.shooter = shooter;
 
         GetComponent<Rigidbody2D>().velocity = shootDir * speed;
