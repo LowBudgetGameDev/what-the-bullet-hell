@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     public void SetUp(Vector3 shootDir, int damageAmount, Transform shooter)
     {
-        trail?.Clear();
+        trail.Clear();
 
         this.damageAmount = damageAmount;
         damageMultiplier = (int) (transform.localScale.x / 0.5f);
@@ -29,6 +29,8 @@ public class Bullet : MonoBehaviour
         upgradeList = GetComponents<IBulletUpgrade>();
 
         hideTimer = 5f;
+
+        trail.widthMultiplier = transform.localScale.x;
     }
 
     private void Start()
