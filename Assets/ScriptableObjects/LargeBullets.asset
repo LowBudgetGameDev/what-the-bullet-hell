@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LargeBullets
   m_EditorClassIdentifier: 
   upgrade: 6
-  levelUpAmount: 1
+  startAmount: 1
+  levelUpAmount: 0.5
   scriptName: LargeBullet
   counter: {fileID: 11400000, guid: 24de742d6998a4f6f83034b2251d89ec, type: 2}
   icon: {fileID: 21300000, guid: 43ea95e1540ac411caa9e256d85f1999, type: 3}

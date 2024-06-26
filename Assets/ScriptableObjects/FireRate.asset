@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireRate
   m_EditorClassIdentifier: 
   upgrade: 1
-  startAmount: 1
+  startAmount: 0.9
   levelUpAmount: -0.1
   scriptName: FireRateUpgrade
   counter: {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}

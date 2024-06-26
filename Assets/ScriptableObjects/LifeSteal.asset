@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: LifeSteal
   m_EditorClassIdentifier: 
   upgrade: 2
-  upgradeType: 0
-  startAmount: 0
+  startAmount: 0.18
   levelUpAmount: 0.18
   scriptName: LifeStealBullet
   counter: {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}

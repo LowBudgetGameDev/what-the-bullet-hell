@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PiercingBullets
   m_EditorClassIdentifier: 
   upgrade: 5
-  levelUpAmount: 2
+  startAmount: 2
+  levelUpAmount: 1
   scriptName: PiercingBullet
   counter: {fileID: 11400000}
   icon: {fileID: 21300000, guid: 6c6495bdc5086486986c24a5539d01cd, type: 3}
