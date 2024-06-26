@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private TrailRenderer trail;
+
     private IBulletUpgrade[] upgradeList;
     private Transform shooter;
 
@@ -15,6 +17,8 @@ public class Bullet : MonoBehaviour
 
     public void SetUp(Vector3 shootDir, int damageAmount, Transform shooter)
     {
+        trail?.Clear();
+
         this.damageAmount = damageAmount;
         damageMultiplier = (int) (transform.localScale.x / 0.5f);
         damageMultiplier = Mathf.Clamp(damageMultiplier, 1, 99);

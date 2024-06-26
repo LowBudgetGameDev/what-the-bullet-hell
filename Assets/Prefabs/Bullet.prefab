@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd17045b620774d32bb2780cbf63757e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trail: {fileID: 1589214904647870019}
 --- !u!50 &-440025468201803844
 Rigidbody2D:
   serializedVersion: 4
@@ -252,7 +253,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
-  m_Autodestruct: 1
+  m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
 --- !u!1 &7360944385553314447
