@@ -18,8 +18,12 @@ public class EnemySpawner : MonoBehaviour
     private int numEnemies;
     private Vector2 cameraSize;
 
+    private bool canSpawn;
+
     private void Awake()
     {
+        canSpawn = true;
+
         spawnTimer = spawnTimerMax;
 
         Camera mainCamera = UtilsClass.GetMainCamera();
@@ -31,6 +35,13 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         LevelManager.Instance.OnLevelUp += EnemySpawner_OnLevelUp;
+        GameManager.Instance.OnBossBattleStart += EnemySpawner_OnBossBattleStart;
+    }
+
+    private void EnemySpawner_OnBossBattleStart(object sender, System.EventArgs e)
+    {
+        canSpawn = false;
+        Destroy(gameObject);
     }
 
     private void EnemySpawner_OnLevelUp(object sender, System.EventArgs e)
@@ -40,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!canSpawn) return;
+
         if (numEnemies >= maxEnemyAmount) return;
 
         spawnTimer -= Time.deltaTime;

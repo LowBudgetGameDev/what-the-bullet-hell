@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public event EventHandler OnGameOver;
+    public event EventHandler OnBossBattleStart;
 
     private Transform playerTransform;
 
@@ -20,5 +21,18 @@ public class GameManager : MonoBehaviour
         {
             OnGameOver?.Invoke(this, EventArgs.Empty);
         };
+    }
+
+    private void Start()
+    {
+        UpgradeManager.Instance.OnUpgradeLevelUp += GameManager_OnUpgradeLevelUp;
+    }
+
+    private void GameManager_OnUpgradeLevelUp(object sender, EventArgs e)
+    {
+        if (LevelManager.Instance.GetLevel() == 15)
+        {
+            OnBossBattleStart?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
