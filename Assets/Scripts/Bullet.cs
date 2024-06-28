@@ -71,7 +71,7 @@ public class Bullet : MonoBehaviour
             upgrade.OnCollided(collision, damageAmount * damageMultiplier, shooter, !hasPiercing);
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet Despawner"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Despawner"))
         {
             ObjectPooler.Instance.DestoryWithPool(transform);
         }

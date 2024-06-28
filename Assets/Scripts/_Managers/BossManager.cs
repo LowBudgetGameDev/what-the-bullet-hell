@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    [SerializeField] private Transform bossPrefab;
+
     private List<Type> bossAttackList;
 
     private void Awake()
@@ -15,6 +17,12 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         UpgradeManager.Instance.OnUpgradeUnlocked += BossManager_OnUpgradeUnlocked;
+        GameManager.Instance.OnBossBattleBegin += BossManager_OnBossBattleBegin;
+    }
+
+    private void BossManager_OnBossBattleBegin(object sender, EventArgs e)
+    {
+        Instantiate(bossPrefab, new Vector3(), Quaternion.identity);
     }
 
     private void BossManager_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)

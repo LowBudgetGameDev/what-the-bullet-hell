@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy Despawner"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Despawner"))
         {
             Destroy(gameObject);
         }

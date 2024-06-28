@@ -35,10 +35,10 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         LevelManager.Instance.OnLevelUp += EnemySpawner_OnLevelUp;
-        GameManager.Instance.OnBossBattleStart += EnemySpawner_OnBossBattleStart;
+        GameManager.Instance.OnMaxLevelReached += EnemySpawner_OnMaxLevelReached;
     }
 
-    private void EnemySpawner_OnBossBattleStart(object sender, System.EventArgs e)
+    private void EnemySpawner_OnMaxLevelReached(object sender, System.EventArgs e)
     {
         canSpawn = false;
         Destroy(gameObject);
