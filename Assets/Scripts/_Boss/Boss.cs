@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    private List<IBossAttack> attackList;
+    private IBossAttack[] attackList;
+
+    public void SetUp()
+    {
+        attackList = GetComponents<IBossAttack>();
+    }
 }
