@@ -8,4 +8,9 @@ public class HomingMissileAttack : MonoBehaviour, IBossAttack
     {
 
     }
+
+    public void StopAttack()
+    {
+
+    }
 }

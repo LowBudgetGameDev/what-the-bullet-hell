@@ -8,4 +8,9 @@ public class LazerAttack : MonoBehaviour, IBossAttack
     {
 
     }
+
+    public void StopAttack()
+    {
+
+    }
 }

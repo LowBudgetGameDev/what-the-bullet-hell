@@ -8,4 +8,9 @@ public class SpikeAttack : MonoBehaviour, IBossAttack
     {
 
     }
+
+    public void StopAttack()
+    {
+
+    }
 }

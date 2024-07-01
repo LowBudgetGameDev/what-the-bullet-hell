@@ -8,4 +8,9 @@ public class ManyBulletsAttack : MonoBehaviour, IBossAttack
     {
 
     }
+
+    public void StopAttack()
+    {
+
+    }
 }

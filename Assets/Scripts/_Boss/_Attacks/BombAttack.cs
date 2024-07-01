@@ -8,4 +8,9 @@ public class BombAttack : MonoBehaviour, IBossAttack
     {
         
     }
+
+    public void StopAttack()
+    {
+
+    }
 }

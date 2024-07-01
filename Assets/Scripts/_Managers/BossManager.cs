@@ -22,7 +22,14 @@ public class BossManager : MonoBehaviour
 
     private void BossManager_OnBossBattleBegin(object sender, EventArgs e)
     {
-        Instantiate(bossPrefab, new Vector3(), Quaternion.identity);
+        Transform boss = Instantiate(bossPrefab, new Vector3(), Quaternion.identity);
+
+        foreach (Type bossAttack in bossAttackList)
+        {
+            boss.gameObject.AddComponent(bossAttack);
+        }
+
+        boss.GetComponent<Boss>().SetUp();
     }
 
     private void BossManager_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
