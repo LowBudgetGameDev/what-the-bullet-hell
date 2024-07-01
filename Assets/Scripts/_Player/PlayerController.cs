@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private float shootTimer;
 
+    private bool isPushedBack;
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (isPushedBack) return;
+
         Vector2 movementVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         rigidbody2D.velocity = movementVector.normalized * movementSpeed;
@@ -59,5 +63,13 @@ public class PlayerController : MonoBehaviour
             OnShoot?.Invoke(this, EventArgs.Empty);
             shootTimer += shootTimerMax;
         }
+    }
+
+    public void ApplyForce(Vector2 force, ForceMode2D forceMode2D, float duration)
+    {
+        isPushedBack = true;
+        rigidbody2D.AddForce(force, forceMode2D);
+
+        FunctionTimer.CreateFunctionTimer(() => { isPushedBack = false; }, duration);
     }
 }
