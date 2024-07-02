@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +12,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnMaxLevelReached;
     public event EventHandler OnBossBattleBegin;
 
-    [SerializeField] private GameObject mainVirtualCamera;
-    [SerializeField] private GameObject bossVirtualCamera;
-    [SerializeField] private Transform bulletBorder;
+    [SerializeField] private GameObject bossCutscene;
 
     private Transform playerTransform;
 
@@ -39,21 +38,21 @@ public class GameManager : MonoBehaviour
         {
             OnMaxLevelReached?.Invoke(this, EventArgs.Empty);
 
-            FunctionTimer.CreateFunctionTimer(ChangeToBossCamera, 3f);
+            FunctionTimer.CreateFunctionTimer(PlayBossCutScene, 3f);
         }
     }
 
-    private void ChangeToBossCamera()
+    private void PlayBossCutScene()
     {
         playerTransform.position = new Vector3(0f, -25f, 0f);
 
-        bossVirtualCamera.SetActive(true);
-        mainVirtualCamera.SetActive(false);
-        bulletBorder.localScale *= 1.2f;
+        bossCutscene.SetActive(true);
+
+        float cutSceneDuration = (float) bossCutscene.GetComponent<PlayableDirector>().playableAsset.duration;
 
         FunctionTimer.CreateFunctionTimer(() =>
         {
             OnBossBattleBegin?.Invoke(this, EventArgs.Empty);
-        }, 2f);
+        }, cutSceneDuration);
     }
 }
