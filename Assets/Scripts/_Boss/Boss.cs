@@ -11,6 +11,12 @@ public class Boss : MonoBehaviour
     public void SetUp()
     {
         attackList = GetComponents<IBossAttack>();
+        FunctionTimer.CreateFunctionTimer(() => { attackList[0].Attack(); }, 1f);
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
