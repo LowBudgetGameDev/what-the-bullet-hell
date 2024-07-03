@@ -70,6 +70,6 @@ public class PlayerController : MonoBehaviour
         isPushedBack = true;
         rigidbody2D.AddForce(force, forceMode2D);
 
-        FunctionTimer.CreateFunctionTimer(() => { isPushedBack = false; }, duration);
+        FunctionTimer.Create(() => { isPushedBack = false; }, duration);
     }
 }

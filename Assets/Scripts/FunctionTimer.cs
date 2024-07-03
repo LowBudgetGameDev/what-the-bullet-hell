@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FunctionTimer
 {
-    public static FunctionTimer CreateFunctionTimer(Action action, float timer)
+    public static FunctionTimer Create(Action action, float timer)
     {
         GameObject gameObject = new GameObject("FunctionTimer", typeof(MonobehaviorHook));
 

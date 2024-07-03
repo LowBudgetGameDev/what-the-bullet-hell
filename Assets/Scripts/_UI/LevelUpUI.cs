@@ -86,7 +86,7 @@ public class LevelUpUI : MonoBehaviour
     public void Hide()
     {
         animator.SetTrigger("Close");
-        FunctionTimer.CreateFunctionTimer(() =>
+        FunctionTimer.Create(() =>
         {
             gameObject.SetActive(false);
             Time.timeScale = 1f;

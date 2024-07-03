@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             OnMaxLevelReached?.Invoke(this, EventArgs.Empty);
 
-            FunctionTimer.CreateFunctionTimer(PlayBossCutScene, 3f);
+            FunctionTimer.Create(PlayBossCutScene, 3f);
         }
     }
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         float cutSceneDuration = (float) bossCutscene.GetComponent<PlayableDirector>().playableAsset.duration;
 
-        FunctionTimer.CreateFunctionTimer(() =>
+        FunctionTimer.Create(() =>
         {
             OnBossBattleBegin?.Invoke(this, EventArgs.Empty);
         }, cutSceneDuration);
