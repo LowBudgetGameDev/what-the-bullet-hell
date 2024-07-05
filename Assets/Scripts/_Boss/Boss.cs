@@ -30,4 +30,16 @@ public class Boss : MonoBehaviour
             player.GetComponent<PlayerController>().ApplyForce((player.transform.position - transform.position).normalized * damageForce, ForceMode2D.Impulse, forceDuration);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.TryGetComponent(out PlayerController player))
+        {
+            player.GetComponent<HealthSystem>().Damage(collisionDamage);
+
+            float damageForce = 15f;
+            float forceDuration = 0.5f;
+            player.GetComponent<PlayerController>().ApplyForce((player.transform.position - transform.position).normalized * damageForce, ForceMode2D.Impulse, forceDuration);
+        }
+    }
 }
