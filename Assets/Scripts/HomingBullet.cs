@@ -30,7 +30,12 @@ public class HomingBullet : MonoBehaviour
 
         Vector2 dirToPlayer = (playerTransform.position - transform.position).normalized;
 
-        rigidbody2D.velocity = dirToPlayer * homingSpeed;
+        rigidbody2D.AddForce(dirToPlayer, ForceMode2D.Impulse);
+
+        if (rigidbody2D.velocity.magnitude > homingSpeed)
+        {
+            rigidbody2D.velocity = rigidbody2D.velocity.normalized * homingSpeed;
+        }
     }
 
     private void Update()
