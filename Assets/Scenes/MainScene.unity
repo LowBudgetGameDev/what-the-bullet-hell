@@ -1142,7 +1142,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3171,6 +3171,9 @@ MonoBehaviour:
     shouldExpand: 1
   - amountToPool: 20
     objectToPool: {fileID: 4748954883564159360, guid: 7ca948a8d5d2146328ca08f96a05a166, type: 3}
+    shouldExpand: 1
+  - amountToPool: 3
+    objectToPool: {fileID: 4748954883564159360, guid: 0c16f1ec7d8834467b12180b98e73180, type: 3}
     shouldExpand: 1
 --- !u!4 &1733508527
 Transform:
