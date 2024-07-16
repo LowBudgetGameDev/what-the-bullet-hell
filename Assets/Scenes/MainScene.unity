@@ -3175,6 +3175,9 @@ MonoBehaviour:
   - amountToPool: 3
     objectToPool: {fileID: 4748954883564159360, guid: 0c16f1ec7d8834467b12180b98e73180, type: 3}
     shouldExpand: 1
+  - amountToPool: 3
+    objectToPool: {fileID: 4748954883564159360, guid: 6e09647d23ecc4d2389aa6cd4b7a8053, type: 3}
+    shouldExpand: 1
 --- !u!4 &1733508527
 Transform:
   m_ObjectHideFlags: 0
