@@ -52,4 +52,11 @@ public class BulletTrailCollider : MonoBehaviour
 
         polygonCollider.SetPath(0, colliderPath);
     }
+
+    private void OnDisable()
+    {
+        if (polygonCollider == null) return;
+
+        polygonCollider.SetPath(0, new Vector2[0]);
+    }
 }
