@@ -5,7 +5,7 @@ using UnityEngine;
 public class GasAttack : MonoBehaviour, IBossAttack
 {
     private Transform bulletPrefab;
-    private float shootTimerMax = 3f;
+    private float shootTimerMax = 1f;
     private int poisonInterval = 1;
 
     private float shootTimer;
