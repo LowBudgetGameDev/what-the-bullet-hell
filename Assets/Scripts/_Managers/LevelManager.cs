@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
 
-        level = 14;
+        level = 12;
         xp = 0;
         levelUpXp = startLevelUpXp;
     }

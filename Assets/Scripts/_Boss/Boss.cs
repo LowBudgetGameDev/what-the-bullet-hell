@@ -8,15 +8,42 @@ public class Boss : MonoBehaviour
 
     private int collisionDamage = 1;
 
+    private float attackDuration = 20f;
+    private float restDuration = 5f;
+
+    private bool isAttacking;
+    private bool isResting;
+
     public void SetUp()
     {
         attackList = GetComponents<IBossAttack>();
-        FunctionTimer.Create(() => { attackList[0].Attack(); }, 1f);
+        FunctionTimer.Create(() => { isResting = false; }, 1f);
     }
 
     private void Update()
     {
-        
+        if (isResting) return;
+
+        if (isAttacking) return;
+
+        IBossAttack attack = attackList[Random.Range(0, attackList.Length)];
+
+        attack.Attack();
+
+        FunctionTimer.Create(() =>
+        {
+            attack.StopAttack();
+            isResting = true;
+            isAttacking = false;
+            FunctionTimer.Create(() =>
+            {
+                isResting = false;
+
+            }, restDuration);
+
+        }, attackDuration);
+
+        isAttacking = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
