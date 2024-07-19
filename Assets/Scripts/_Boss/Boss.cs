@@ -11,12 +11,15 @@ public class Boss : MonoBehaviour
     private float attackDuration = 20f;
     private float restDuration = 5f;
 
+    private float prevAttackIndex = -1;
+
     private bool isAttacking;
     private bool isResting;
 
     public void SetUp()
     {
         attackList = GetComponents<IBossAttack>();
+        isResting = true;
         FunctionTimer.Create(() => { isResting = false; }, 1f);
     }
 
@@ -26,7 +29,12 @@ public class Boss : MonoBehaviour
 
         if (isAttacking) return;
 
-        IBossAttack attack = attackList[Random.Range(0, attackList.Length)];
+        int attackIndex = Random.Range(0, attackList.Length);
+
+        while (attackIndex == prevAttackIndex) attackIndex = Random.Range(0, attackList.Length);
+
+        IBossAttack attack = attackList[attackIndex];
+        prevAttackIndex = attackIndex;
 
         attack.Attack();
 

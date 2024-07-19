@@ -35,6 +35,7 @@ public class SpikeAttack : MonoBehaviour, IBossAttack
 
         rigidbody2D.sharedMaterial = null;
 
+        rigidbody2D.position = Vector2.zero;
         rigidbody2D.velocity = Vector2.zero;
         rigidbody2D.angularVelocity = 0f;
         rigidbody2D.rotation = 0f;
