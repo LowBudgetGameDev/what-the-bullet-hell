@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    public class OnBossSpawnedEventArgs : EventArgs
+    {
+        public Transform bossTransform;
+    }
+
+    public static BossManager Instance { get; private set; }
+
+    public event EventHandler<OnBossSpawnedEventArgs> OnBossSpawned;
+
     [SerializeField] private Transform bossPrefab;
 
     private List<Type> bossAttackList;
 
     private void Awake()
     {
+        Instance = this;
+
         bossAttackList = new List<Type>();
     }
 
@@ -30,6 +41,8 @@ public class BossManager : MonoBehaviour
         }
 
         boss.GetComponent<Boss>().SetUp();
+
+        OnBossSpawned?.Invoke(this, new OnBossSpawnedEventArgs() { bossTransform = boss });
     }
 
     private void BossManager_OnUpgradeUnlocked(object sender, UpgradeManager.UpgradeUnlockedEventArgs e)
