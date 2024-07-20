@@ -13,6 +13,7 @@ public class BossManager : MonoBehaviour
     public static BossManager Instance { get; private set; }
 
     public event EventHandler<OnBossSpawnedEventArgs> OnBossSpawned;
+    public event EventHandler OnBossKilled;
 
     [SerializeField] private Transform bossPrefab;
 
@@ -41,6 +42,11 @@ public class BossManager : MonoBehaviour
         }
 
         boss.GetComponent<Boss>().SetUp();
+
+        boss.GetComponent<HealthSystem>().OnDied += (object sender, EventArgs e) =>
+        {
+            OnBossKilled?.Invoke(this, EventArgs.Empty);
+        };
 
         OnBossSpawned?.Invoke(this, new OnBossSpawnedEventArgs() { bossTransform = boss });
     }

@@ -40,6 +40,8 @@ public class Boss : MonoBehaviour
 
         FunctionTimer.Create(() =>
         {
+            if (this == null) return;
+
             attack.StopAttack();
             isResting = true;
             isAttacking = false;

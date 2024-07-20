@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnGameOver;
     public event EventHandler OnMaxLevelReached;
     public event EventHandler OnBossBattleBegin;
+    public event EventHandler OnWin;
 
     [SerializeField] private GameObject bossCutscene;
+    [SerializeField] private GameObject bossDeathCutscene;
 
     private Transform playerTransform;
 
@@ -30,6 +32,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpgradeManager.Instance.OnUpgradeLevelUp += GameManager_OnUpgradeLevelUp;
+        BossManager.Instance.OnBossKilled += GameManager_OnBossKilled;
+    }
+
+    private void GameManager_OnBossKilled(object sender, EventArgs e)
+    {
+        PlayBossDeathCutscene();
     }
 
     private void GameManager_OnUpgradeLevelUp(object sender, EventArgs e)
@@ -38,11 +46,11 @@ public class GameManager : MonoBehaviour
         {
             OnMaxLevelReached?.Invoke(this, EventArgs.Empty);
 
-            FunctionTimer.Create(PlayBossCutScene, 3f);
+            FunctionTimer.Create(PlayBossCutscene, 3f);
         }
     }
 
-    private void PlayBossCutScene()
+    private void PlayBossCutscene()
     {
         playerTransform.position = new Vector3(0f, -25f, 0f);
 
@@ -53,6 +61,18 @@ public class GameManager : MonoBehaviour
         FunctionTimer.Create(() =>
         {
             OnBossBattleBegin?.Invoke(this, EventArgs.Empty);
+        }, cutSceneDuration);
+    }
+
+    private void PlayBossDeathCutscene()
+    {
+        bossDeathCutscene.SetActive(true);
+
+        float cutSceneDuration = (float) bossDeathCutscene.GetComponent<PlayableDirector>().playableAsset.duration;
+
+        FunctionTimer.Create(() =>
+        {
+            OnWin?.Invoke(this, EventArgs.Empty);
         }, cutSceneDuration);
     }
 }
