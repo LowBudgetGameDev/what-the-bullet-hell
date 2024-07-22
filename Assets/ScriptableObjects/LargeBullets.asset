@@ -20,3 +20,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 43ea95e1540ac411caa9e256d85f1999, type: 3}
   nameString: Large Bullets
   description: Your bullets become larger making it easier to hit enemies.
+  color: {r: 1, g: 1, b: 1, a: 1}

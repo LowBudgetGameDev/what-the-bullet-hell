@@ -21,3 +21,4 @@ MonoBehaviour:
   nameString: Piercing bullets
   description: Your bullets will be able to shoot through a couple enemies before
     stopping.
+  color: {r: 1, g: 0.5, b: 0, a: 1}

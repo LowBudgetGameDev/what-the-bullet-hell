@@ -9,4 +9,6 @@ public interface IUpgrade
     public void OnAdded();
 
     public void SetIsCounter(bool isCounter);
+
+    public UpgradeSO GetUpgrade();
 }

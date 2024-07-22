@@ -77,4 +77,9 @@ public class ExplosiveBullet : MonoBehaviour, IUpgrade
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Explosive_Bullets);
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }

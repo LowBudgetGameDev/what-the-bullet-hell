@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     public void SetUp(Vector3 shootDir, int damageAmount, Transform shooter)
     {
         trail.Clear();
+        GetComponent<BulletColor>()?.UpdateBulletColor(shooter);
 
         this.damageAmount = damageAmount;
         damageMultiplier = (int) (transform.localScale.x / 0.5f);

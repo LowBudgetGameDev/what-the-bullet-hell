@@ -56,4 +56,9 @@ public class PoisonBullet : MonoBehaviour, IUpgrade
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Poison);
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }

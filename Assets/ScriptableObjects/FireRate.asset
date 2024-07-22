@@ -21,3 +21,4 @@ MonoBehaviour:
   nameString: Shoot Speed
   description: Will decrease the time between shots letting you shoot more bullets
     per second.
+  color: {r: 1, g: 1, b: 1, a: 1}

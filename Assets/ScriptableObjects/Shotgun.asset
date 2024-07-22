@@ -21,3 +21,4 @@ MonoBehaviour:
   nameString: Shotgun
   description: You gain a spread shot meaning that you shoot multiple bullets at
     the same time.
+  color: {r: 1, g: 1, b: 1, a: 1}

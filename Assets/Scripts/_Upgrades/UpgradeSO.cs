@@ -45,6 +45,7 @@ public class UpgradeSO : ScriptableObject
     public Sprite icon;
     public string nameString;
     public string description;
+    public Color color;
 
     private UpgradeClass upgradeClass = new UpgradeClass();
 

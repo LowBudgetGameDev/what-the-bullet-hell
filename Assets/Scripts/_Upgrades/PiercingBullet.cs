@@ -64,4 +64,9 @@ public class PiercingBullet : MonoBehaviour, IUpgrade
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Piercing_Bullets);
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }

@@ -61,4 +61,9 @@ public class LifeStealBullet : MonoBehaviour, IUpgrade
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Life_Steal);
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }

@@ -26,4 +26,9 @@ public class LargeBullet : MonoBehaviour, IUpgrade
     {
         upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Large_Bullets);
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }

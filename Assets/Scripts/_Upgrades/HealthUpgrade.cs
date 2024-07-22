@@ -30,4 +30,9 @@ public class HealthUpgrade : MonoBehaviour, IUpgrade
 
         GetComponent<HealthSystem>().AddBonusHealth((int)upgrade.GetUpgradeAmount(isCounter));
     }
+
+    public UpgradeSO GetUpgrade()
+    {
+        return upgrade;
+    }
 }
