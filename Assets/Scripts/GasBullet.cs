@@ -51,7 +51,7 @@ public class GasBullet : MonoBehaviour
     {
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
-            healthSystem.Poison(poisonInterval, poisonTime);
+            healthSystem.Poison(1, poisonInterval, poisonTime);
         }
     }
 }

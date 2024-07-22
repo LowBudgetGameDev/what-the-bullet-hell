@@ -33,20 +33,6 @@ public class HealthSystem : MonoBehaviour
         };
     }
 
-    private void Update()
-    {
-        if (poisonTimer <= 0f) return;
-
-        poisonTimer -= Time.deltaTime;
-        poisonDamageTimer -= Time.deltaTime;
-
-        if (poisonDamageTimer < 0f)
-        {
-            Damage(1);
-            poisonDamageTimer += poisonDamageTimerMax;
-        }
-    }
-
     public void AddBonusHealth(int amount)
     {
         maxHealth = originalMaxHealth + amount;
@@ -68,11 +54,14 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    public void Poison(float damageInterval, float duration)
+    public void Poison(int poisonDamage, float damageInterval, float duration)
     {
-        poisonTimer = duration;
-        poisonDamageTimerMax = damageInterval;
-        poisonDamageTimer = poisonDamageTimerMax;
+        RepeatedFunctionTimer.Create(() =>
+        {
+            if (this == null) return;
+
+            Damage(poisonDamage);
+        }, damageInterval, duration);
     }
 
     public void Heal(int amount)
