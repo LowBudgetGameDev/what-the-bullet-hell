@@ -11,7 +11,9 @@ public class Bullet : MonoBehaviour
 
     private float speed = 30f;
     private int damageAmount;
-    private int damageMultiplier;
+    private float damageMultiplier;
+
+    private float baseSize;
 
     private float hideTimer;
 
@@ -21,8 +23,7 @@ public class Bullet : MonoBehaviour
         GetComponent<BulletColor>()?.UpdateBulletColor(shooter);
 
         this.damageAmount = damageAmount;
-        damageMultiplier = (int) (transform.localScale.x / 0.5f);
-        damageMultiplier = Mathf.Clamp(damageMultiplier, 1, 99);
+        damageMultiplier = transform.localScale.x / baseSize;
         this.shooter = shooter;
 
         GetComponent<Rigidbody2D>().velocity = shootDir * speed;
@@ -32,6 +33,11 @@ public class Bullet : MonoBehaviour
         hideTimer = 5f;
 
         trail.widthMultiplier = transform.localScale.x;
+    }
+
+    private void Awake()
+    {
+        baseSize = transform.localScale.x;
     }
 
     private void Start()
@@ -59,22 +65,24 @@ public class Bullet : MonoBehaviour
         {
             if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.Damage(damageAmount * damageMultiplier);
+                healthSystem.Damage((int) (damageAmount * damageMultiplier));
             }
 
             ObjectPooler.Instance.DestoryWithPool(transform);
+            transform.localScale = Vector3.one * baseSize;
         }
 
         bool hasPiercing = TryGetComponent(out PiercingBullet.PiercingBulletUpgrade piercing);
 
         foreach (IBulletUpgrade upgrade in upgradeList)
         {
-            upgrade.OnCollided(collision, damageAmount * damageMultiplier, shooter, !hasPiercing);
+            upgrade.OnCollided(collision, (int) (damageAmount * damageMultiplier), shooter, !hasPiercing);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Despawner"))
         {
             ObjectPooler.Instance.DestoryWithPool(transform);
+            transform.localScale = Vector3.one * baseSize;
         }
     }
 }

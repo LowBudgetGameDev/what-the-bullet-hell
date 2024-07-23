@@ -8,7 +8,7 @@ public class HomingMissileAttack : MonoBehaviour, IBossAttack
 
     private int numBullets = 10;
     private float shootTimerMax = 3f;
-    private int shootDamage = 1;
+    private int shootDamage = 50;
 
     private float shootTimer;
     private bool isAttacking;

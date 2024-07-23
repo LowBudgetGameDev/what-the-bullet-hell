@@ -6,7 +6,7 @@ public class HugeBulletAttack : MonoBehaviour, IBossAttack
 {
     private Transform bulletPrefab;
     private float shootTimerMax = 5f;
-    private int shootDamage = 1;
+    private int shootDamage = 100;
 
     private float shootTimer;
     private bool isAttacking;

@@ -10,6 +10,7 @@ public class GasBullet : MonoBehaviour
 
     private float speed = 50f;
     private float poisonInterval;
+    private int poisonDamage = 40;
     private float poisonTime = 3f;
 
     private float hideTimer;
@@ -51,7 +52,7 @@ public class GasBullet : MonoBehaviour
     {
         if (collision.transform.TryGetComponent(out HealthSystem healthSystem))
         {
-            healthSystem.Poison(1, poisonInterval, poisonTime);
+            healthSystem.Poison(poisonDamage, poisonInterval, poisonTime);
         }
     }
 }

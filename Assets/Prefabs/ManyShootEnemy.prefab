@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtPlayer: 0
   movementSpeed: 1
-  collisionDamage: 1
+  collisionDamage: 80
   xpGained: 2
 --- !u!114 &-7460768236436843581
 MonoBehaviour:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147bac00c82754e9ab1535c4b58856db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 150
 --- !u!114 &56612708481321465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4748954883564159360, guid: ffd53c484e61b40eabaf243069c3d5d1, type: 3}
   numBullets: 12
-  shootDamage: 1
+  shootDamage: 10
   shootTimerMax: 1.5
 --- !u!114 &8441384407272067932
 MonoBehaviour:

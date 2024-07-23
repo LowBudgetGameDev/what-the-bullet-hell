@@ -23,7 +23,7 @@ public class PoisonBullet : MonoBehaviour, IUpgrade
             {
                 float poisonDuration = upgrade.GetUpgradeAmount(isCounter);
 
-                healthSystem.Poison(1, 1f, poisonDuration);
+                healthSystem.Poison(damageAmount / 2, 1f, poisonDuration);
             }
 
             if (canDestroy) ObjectPooler.Instance.DestoryWithPool(transform);

@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Transform bulletPrefab;
 
-    private int damageAmount = 1;
+    private int damageAmount = 20;
     private int bulletsPerShot;
 
     private void Awake()

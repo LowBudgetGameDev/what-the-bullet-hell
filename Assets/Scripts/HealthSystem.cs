@@ -15,10 +15,6 @@ public class HealthSystem : MonoBehaviour
 
     private int health;
 
-    private float poisonTimer;
-    private float poisonDamageTimer;
-    private float poisonDamageTimerMax;
-
     private void Awake()
     {
         health = maxHealth;
@@ -29,7 +25,7 @@ public class HealthSystem : MonoBehaviour
     {
         UpgradeManager.Instance.OnUpgradeLevelUp += (object sender, EventArgs e) =>
         {
-            Heal(100);
+            Heal(maxHealth);
         };
     }
 

@@ -6,7 +6,7 @@ public class BombAttack : MonoBehaviour, IBossAttack
 {
     private Transform bulletPrefab;
     private float shootTimerMax = 2f;
-    private int explosionDamage = 6;
+    private int explosionDamage = 120;
 
     private float shootTimer;
     private bool isAttacking;

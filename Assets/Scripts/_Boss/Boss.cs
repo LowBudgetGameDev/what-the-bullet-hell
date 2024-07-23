@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
 {
     private IBossAttack[] attackList;
 
-    private int collisionDamage = 1;
+    private int collisionDamage = 50;
 
     private float attackDuration = 20f;
     private float restDuration = 5f;

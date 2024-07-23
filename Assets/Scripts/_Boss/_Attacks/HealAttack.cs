@@ -18,19 +18,19 @@ public class HealAttack : MonoBehaviour, IBossAttack
     public void Attack()
     {
         Transform healingBall1 = Instantiate(ballPrefab, new Vector3(30f, 15f), Quaternion.identity);
-        healingBall1.GetComponent<HealingBall>().Setup(transform, 5);
+        healingBall1.GetComponent<HealingBall>().Setup(transform, 6250);
         healingBallInstances.Add(healingBall1);
 
         Transform healingBall2 = Instantiate(ballPrefab, new Vector3(-30f, 15f), Quaternion.identity);
-        healingBall2.GetComponent<HealingBall>().Setup(transform, 5);
+        healingBall2.GetComponent<HealingBall>().Setup(transform, 6250);
         healingBallInstances.Add(healingBall2);
 
         Transform healingBall3 = Instantiate(ballPrefab, new Vector3(30f, -15f), Quaternion.identity);
-        healingBall3.GetComponent<HealingBall>().Setup(transform, 5);
+        healingBall3.GetComponent<HealingBall>().Setup(transform, 6250);
         healingBallInstances.Add(healingBall3);
 
         Transform healingBall4 = Instantiate(ballPrefab, new Vector3(-30f, -15f), Quaternion.identity);
-        healingBall4.GetComponent<HealingBall>().Setup(transform, 5);
+        healingBall4.GetComponent<HealingBall>().Setup(transform, 6250);
         healingBallInstances.Add(healingBall4);
     }
 

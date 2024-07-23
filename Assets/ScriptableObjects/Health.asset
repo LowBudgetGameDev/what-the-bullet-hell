@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   upgrade: 0
-  startAmount: 1
-  levelUpAmount: 1
+  startAmount: 20
+  levelUpAmount: 10
   scriptName: HealthUpgrade
   counter: {fileID: 11400000, guid: 8f2e43c2236bd41ff85b9cc10499a23f, type: 2}
   icon: {fileID: 21300000, guid: 294844f47481f4bdb99e750fc2623c03, type: 3}

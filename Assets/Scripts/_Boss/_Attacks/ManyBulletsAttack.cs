@@ -9,7 +9,7 @@ public class ManyBulletsAttack : MonoBehaviour, IBossAttack
 
     private int numBullets = 20;
     private float shootTimerMax = 0.25f;
-    private int shootDamage = 1;
+    private int shootDamage = 10;
 
     private float shootTimer;
     private bool isAttacking;
