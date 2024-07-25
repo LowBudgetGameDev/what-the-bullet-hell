@@ -69,7 +69,6 @@ public class Bullet : MonoBehaviour
             }
 
             ObjectPooler.Instance.DestoryWithPool(transform);
-            transform.localScale = Vector3.one * baseSize;
         }
 
         bool hasPiercing = TryGetComponent(out PiercingBullet.PiercingBulletUpgrade piercing);
@@ -82,7 +81,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Despawner"))
         {
             ObjectPooler.Instance.DestoryWithPool(transform);
-            transform.localScale = Vector3.one * baseSize;
         }
+    }
+
+    private void OnDisable()
+    {
+        transform.localScale = Vector3.one * baseSize;
     }
 }
