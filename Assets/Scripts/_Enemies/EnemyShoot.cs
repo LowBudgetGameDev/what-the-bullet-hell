@@ -47,6 +47,8 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot(float angleDegrees)
     {
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
+
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);

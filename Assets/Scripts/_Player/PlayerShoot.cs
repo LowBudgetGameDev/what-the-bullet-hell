@@ -26,6 +26,8 @@ public class PlayerShoot : MonoBehaviour
 
     private void PlayerShoot_OnShoot(object sender, System.EventArgs e)
     {
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
+
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);
