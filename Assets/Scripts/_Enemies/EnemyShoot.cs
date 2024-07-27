@@ -39,7 +39,12 @@ public class EnemyShoot : MonoBehaviour
 
         if (shootTimer < 0f)
         {
-            for (int i = 0; i < numBullets; i++) Shoot(360f / numBullets * i);
+            for (int i = 0; i < numBullets; i++)
+            {
+                Shoot(360f / numBullets * i);
+            }
+
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
 
             shootTimer += shootTimerMax;
         }
@@ -47,8 +52,6 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot(float angleDegrees)
     {
-        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
-
         for (int i = 0; i < bulletsPerShot; i++)
         {
             Transform bullet = ObjectPooler.Instance.InstantiateWithPool(bulletPrefab, transform.position, Quaternion.identity);
