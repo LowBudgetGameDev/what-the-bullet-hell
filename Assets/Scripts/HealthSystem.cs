@@ -48,6 +48,8 @@ public class HealthSystem : MonoBehaviour
         {
             Die();
         }
+
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Hit);
     }
 
     public void Poison(int poisonDamage, float damageInterval, float duration)
