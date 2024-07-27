@@ -21,6 +21,8 @@ public class ExplosiveBullet : MonoBehaviour, IUpgrade
         {
             if (upgrade == null) upgrade = UpgradeManager.Instance.GetUpgradeSO(Upgrade.Explosive_Bullets);
 
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Boom);
+
             Transform particles = Instantiate(explosionParticles, transform.position, Quaternion.identity);
             particles.localScale *= 0.25f * upgrade.GetLevel(isCounter);
 

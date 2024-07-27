@@ -13,7 +13,9 @@ public class MusicManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.PlayOneShot(mainTheme);
+        audioSource.clip = mainTheme;
+
+        audioSource.Play();
     }
 
     private void Start()
@@ -25,6 +27,8 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Stop();
 
-        audioSource.PlayOneShot(bossTheme);
+        audioSource.clip = bossTheme;
+
+        audioSource.Play();
     }
 }

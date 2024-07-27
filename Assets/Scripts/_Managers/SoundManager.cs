@@ -8,6 +8,11 @@ public class SoundManager : MonoBehaviour
 {
     public enum Sound
     {
+        Boom_1,
+        Boom_2,
+        Boom_3,
+        Boom_4,
+        Boom_5,
         Hit_1,
         Hit_2,
         Hit_3,
@@ -22,6 +27,7 @@ public class SoundManager : MonoBehaviour
 
     public enum SoundType
     {
+        Boom,
         Hit,
         Shoot
     }
