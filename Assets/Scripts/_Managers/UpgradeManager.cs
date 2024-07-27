@@ -54,6 +54,15 @@ public class UpgradeManager : MonoBehaviour
         upgrade.counter.CounterLevelUp();
 
         OnUpgradeLevelUp?.Invoke(this, EventArgs.Empty);
+
+        if (upgrade.GetLevel() == 1)
+        {
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Unlock);
+        }
+        else
+        {
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Upgrade);
+        }
     }
 
     public UpgradeSO GetUpgradeSO(Upgrade upgrade)

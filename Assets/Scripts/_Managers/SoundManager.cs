@@ -13,6 +13,11 @@ public class SoundManager : MonoBehaviour
         Boom_3,
         Boom_4,
         Boom_5,
+        Death_1,
+        Death_2,
+        Death_3,
+        Death_4,
+        Death_5,
         Hit_1,
         Hit_2,
         Hit_3,
@@ -22,14 +27,27 @@ public class SoundManager : MonoBehaviour
         Shoot_2,
         Shoot_3,
         Shoot_4,
-        Shoot_5
+        Shoot_5,
+        Unlock_1,
+        Unlock_2,
+        Unlock_3,
+        Unlock_4,
+        Unlock_5,
+        Upgrade_1,
+        Upgrade_2,
+        Upgrade_3,
+        Upgrade_4,
+        Upgrade_5
     }
 
     public enum SoundType
     {
         Boom,
+        Death,
         Hit,
-        Shoot
+        Shoot,
+        Unlock,
+        Upgrade
     }
 
     public static SoundManager Instance { get; private set; }
