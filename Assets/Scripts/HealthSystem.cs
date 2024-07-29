@@ -59,7 +59,7 @@ public class HealthSystem : MonoBehaviour
             if (this == null) return;
 
             Damage(poisonDamage);
-        }, damageInterval, duration);
+        }, damageInterval, duration, true);
     }
 
     public void Heal(int amount)

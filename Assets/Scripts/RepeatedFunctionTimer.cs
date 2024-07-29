@@ -9,7 +9,18 @@ public class RepeatedFunctionTimer
     {
         GameObject gameObject = new GameObject("FunctionTimer", typeof(MonobehaviorHook));
 
-        RepeatedFunctionTimer functionTimer = new RepeatedFunctionTimer(action, interval, timer, gameObject);
+        RepeatedFunctionTimer functionTimer = new RepeatedFunctionTimer(action, interval, timer, gameObject, false);
+
+        gameObject.GetComponent<MonobehaviorHook>().onUpdate = functionTimer.Update;
+
+        return functionTimer;
+    }
+
+    public static RepeatedFunctionTimer Create(Action action, float interval, float timer, bool timeScaleDependent)
+    {
+        GameObject gameObject = new GameObject("FunctionTimer", typeof(MonobehaviorHook));
+
+        RepeatedFunctionTimer functionTimer = new RepeatedFunctionTimer(action, interval, timer, gameObject, timeScaleDependent);
 
         gameObject.GetComponent<MonobehaviorHook>().onUpdate = functionTimer.Update;
 
@@ -32,22 +43,24 @@ public class RepeatedFunctionTimer
     private float timer;
     private GameObject gameObject;
     private bool isDestroyed;
+    private bool timeScaleDependent;
 
-    private RepeatedFunctionTimer(Action action, float interval, float timer, GameObject gameObject)
+    private RepeatedFunctionTimer(Action action, float interval, float timer, GameObject gameObject, bool timeScaleDependent)
     {
         this.action = action;
         this.interval = interval;
         this.timer = timer;
         this.gameObject = gameObject;
         isDestroyed = false;
+        this.timeScaleDependent = timeScaleDependent;
     }
 
     public void Update()
     {
         if (isDestroyed) return;
 
-        timer -= Time.unscaledDeltaTime;
-        intervalTimer -= Time.unscaledDeltaTime;
+        timer -= timeScaleDependent ? Time.deltaTime : Time.unscaledDeltaTime;
+        intervalTimer -= timeScaleDependent ? Time.deltaTime : Time.unscaledDeltaTime;
 
         if (intervalTimer < 0f)
         {

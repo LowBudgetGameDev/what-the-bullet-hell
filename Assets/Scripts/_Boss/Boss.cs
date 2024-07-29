@@ -49,9 +49,9 @@ public class Boss : MonoBehaviour
             {
                 isResting = false;
 
-            }, restDuration);
+            }, restDuration, true);
 
-        }, attackDuration);
+        }, attackDuration, true);
 
         isAttacking = true;
     }
