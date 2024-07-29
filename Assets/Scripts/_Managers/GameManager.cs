@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     private void PlayBossCutscene()
     {
         playerTransform.position = new Vector3(0f, -25f, 0f);
+        playerTransform.GetComponent<PlayerController>().enabled = false;
 
         bossCutscene.SetActive(true);
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         FunctionTimer.Create(() =>
         {
             OnBossBattleBegin?.Invoke(this, EventArgs.Empty);
+            playerTransform.GetComponent<PlayerController>().enabled = true;
         }, cutSceneDuration);
     }
 
