@@ -25,7 +25,15 @@ public class UpgradeUI : MonoBehaviour
         nameText.text = upgrade.nameString;
         icon.sprite = upgrade.icon;
         description.text = upgrade.description;
-        counterText.text = "The Enemies Will Gain " + upgrade.counter.nameString;
+
+        if (upgrade.GetCounter() != null)
+        {
+            counterText.text = "The Enemies Will Gain " + upgrade.GetCounter().nameString;
+        } 
+        else
+        {
+            counterText.text = "The Enemies Will Gain ??????????";
+        }
 
         if (!UpgradeManager.Instance.HasUnlockedUpgrade(upgrade))
         {

@@ -16,7 +16,10 @@ MonoBehaviour:
   startAmount: 0.18
   levelUpAmount: 0.18
   scriptName: LifeStealBullet
-  counter: {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}
+  possibleCounterList:
+  - {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}
+  - {fileID: 11400000, guid: 8f2e43c2236bd41ff85b9cc10499a23f, type: 2}
+  - {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}
   icon: {fileID: 21300000, guid: 78530f2bcafd948b7bbdd4ef5c5ecc85, type: 3}
   nameString: Life Steal
   description: Everytime you hit and enemy you gain just as much health as they lose.

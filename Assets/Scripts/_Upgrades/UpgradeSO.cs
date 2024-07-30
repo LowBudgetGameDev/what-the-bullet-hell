@@ -2,15 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Upgrade")]
 public class UpgradeSO : ScriptableObject
 {
     private class UpgradeClass
     {
+        public UpgradeSO counter { get; private set; }
+
         public int Level { get; private set; }
         public int CounterLevel { get; private set; }
         private int maxLevel = 5;
+
+        public bool isCounterOfUpgrade { get; private set; }
+
+        public void SetCounter(UpgradeSO counter)
+        {
+            this.counter = counter;
+            counter.MakeCounter();
+        }
+
+        public void MakeCounterOfUpgrade()
+        {
+            isCounterOfUpgrade = true;
+        }
 
         public void IncreaseLevel()
         {
@@ -41,7 +57,7 @@ public class UpgradeSO : ScriptableObject
     public float startAmount;
     public float levelUpAmount;
     public string scriptName;
-    public UpgradeSO counter;
+    public List<UpgradeSO> possibleCounterList;
     public Sprite icon;
     public string nameString;
     public string description;
@@ -57,6 +73,35 @@ public class UpgradeSO : ScriptableObject
     public Type GetScriptType()
     {
         return Type.GetType(scriptName);
+    }
+
+    public void DefineCounter()
+    {
+        int counterIndex = Random.Range(0, possibleCounterList.Count);
+
+        while (possibleCounterList[counterIndex].IsCounterOfUpgrade())
+        {
+            counterIndex++;
+
+            if (counterIndex >= possibleCounterList.Count) counterIndex = 0;
+        }
+
+        upgradeClass.SetCounter(possibleCounterList[counterIndex]);
+    }
+
+    public UpgradeSO GetCounter()
+    {
+        return upgradeClass.counter;
+    }
+
+    public void MakeCounter()
+    {
+        upgradeClass.MakeCounterOfUpgrade();
+    }
+
+    public bool IsCounterOfUpgrade()
+    {
+        return upgradeClass.isCounterOfUpgrade;
     }
 
     public int GetLevel()

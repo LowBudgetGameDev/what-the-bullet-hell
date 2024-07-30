@@ -44,14 +44,16 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!unlockedUpgrades.Contains(upgrade))
         {
+            upgrade.DefineCounter();
+
             unlockedUpgrades.Add(upgrade);
-            unlockedCounters.Add(upgrade.counter);
+            unlockedCounters.Add(upgrade.GetCounter());
 
             OnUpgradeUnlocked?.Invoke(this, new UpgradeUnlockedEventArgs { upgrade = upgrade });
         }
 
         upgrade.LevelUp();
-        upgrade.counter.CounterLevelUp();
+        upgrade.GetCounter().CounterLevelUp();
 
         OnUpgradeLevelUp?.Invoke(this, EventArgs.Empty);
 

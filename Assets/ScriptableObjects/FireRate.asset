@@ -16,7 +16,10 @@ MonoBehaviour:
   startAmount: 0.9
   levelUpAmount: -0.1
   scriptName: FireRateUpgrade
-  counter: {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}
+  possibleCounterList:
+  - {fileID: 11400000, guid: 3561595bff4e24ed696bb8383f535a46, type: 2}
+  - {fileID: 11400000, guid: 0fece7c39653c42e5966b6b2e41a06e1, type: 2}
+  - {fileID: 11400000, guid: 5d7528194bcc04061908ffdadee836fa, type: 2}
   icon: {fileID: 21300000, guid: 47636c5b510d74f8cb1787ec1214cdeb, type: 3}
   nameString: Shoot Speed
   description: Will decrease the time between shots letting you shoot more bullets

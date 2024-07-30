@@ -16,7 +16,10 @@ MonoBehaviour:
   startAmount: 3
   levelUpAmount: 1
   scriptName: PoisonBullet
-  counter: {fileID: 11400000, guid: 5d7528194bcc04061908ffdadee836fa, type: 2}
+  possibleCounterList:
+  - {fileID: 11400000, guid: a191534ff6ec747aea999017394b5b57, type: 2}
+  - {fileID: 11400000, guid: 0fece7c39653c42e5966b6b2e41a06e1, type: 2}
+  - {fileID: 11400000, guid: 5d7528194bcc04061908ffdadee836fa, type: 2}
   icon: {fileID: 21300000, guid: 8180f2a5abf15467b8131d018150ad2e, type: 3}
   nameString: Poison
   description: Your bullets deal continuous damage to enemies for some time.

@@ -16,7 +16,10 @@ MonoBehaviour:
   startAmount: 20
   levelUpAmount: 10
   scriptName: HealthUpgrade
-  counter: {fileID: 11400000, guid: 8f2e43c2236bd41ff85b9cc10499a23f, type: 2}
+  possibleCounterList:
+  - {fileID: 11400000, guid: 24de742d6998a4f6f83034b2251d89ec, type: 2}
+  - {fileID: 11400000, guid: 8f2e43c2236bd41ff85b9cc10499a23f, type: 2}
+  - {fileID: 11400000, guid: f29a68afb5cbd40dda3e34794cb98e3b, type: 2}
   icon: {fileID: 21300000, guid: 294844f47481f4bdb99e750fc2623c03, type: 3}
   nameString: Health
   description: Increases your max health so it will take longer for you to die.
