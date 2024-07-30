@@ -52,8 +52,6 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (shooter == null) ObjectPooler.Instance.DestoryWithPool(transform);
-
         hideTimer -= Time.deltaTime;
 
         if (hideTimer < 0f) ObjectPooler.Instance.DestoryWithPool(transform);

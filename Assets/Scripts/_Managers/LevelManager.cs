@@ -12,15 +12,15 @@ public class LevelManager : MonoBehaviour
 
     private int level;
     private int xp;
-    private int startLevelUpXp = 1;
+    private int startLevelUpXp = 5;
     private int levelUpXp;
-    private int levelUpXpIncrease = 1;
+    private int levelUpXpIncrease = 15;
 
     private void Awake()
     {
         Instance = this;
 
-        level = 12;
+        level = 0;
         xp = 0;
         levelUpXp = startLevelUpXp;
     }
