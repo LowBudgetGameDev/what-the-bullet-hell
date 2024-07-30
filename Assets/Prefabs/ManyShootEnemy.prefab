@@ -116,7 +116,7 @@ MonoBehaviour:
   lookAtPlayer: 0
   movementSpeed: 1
   collisionDamage: 80
-  xpGained: 2
+  xpGained: 20
 --- !u!114 &-7460768236436843581
 MonoBehaviour:
   m_ObjectHideFlags: 0
