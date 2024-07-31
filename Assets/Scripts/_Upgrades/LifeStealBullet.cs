@@ -27,7 +27,7 @@ public class LifeStealBullet : MonoBehaviour, IUpgrade
 
                 if (randomFloat < upgrade.GetUpgradeAmount(isCounter))
                 {
-                    shooter.GetComponent<HealthSystem>().Heal(damageAmount);
+                    if (shooter != null) shooter.GetComponent<HealthSystem>().Heal(damageAmount);
                 }
             }
 

@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4748954883564159360, guid: ffd53c484e61b40eabaf243069c3d5d1, type: 3}
   numBullets: 1
-  shootDamage: 20
+  shootDamage: 15
   shootTimerMax: 0.75
 --- !u!114 &7496648694398191548
 MonoBehaviour:
