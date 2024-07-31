@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   upgrade: 0
-  startAmount: 20
+  startAmount: 50
   levelUpAmount: 10
   scriptName: HealthUpgrade
   possibleCounterList:
