@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrade: 0
   startAmount: 50
-  levelUpAmount: 10
+  levelUpAmount: 25
   scriptName: HealthUpgrade
   possibleCounterList:
   - {fileID: 11400000, guid: 24de742d6998a4f6f83034b2251d89ec, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrade: 4
   startAmount: 3
-  levelUpAmount: 1
+  levelUpAmount: 0.5
   scriptName: PoisonBullet
   possibleCounterList:
   - {fileID: 11400000, guid: a191534ff6ec747aea999017394b5b57, type: 2}

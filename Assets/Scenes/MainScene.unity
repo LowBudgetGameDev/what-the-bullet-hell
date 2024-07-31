@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 201374923}
   halfSpawnLength: 35
-  maxEnemyAmount: 16
+  maxEnemyAmount: 20
   spawnTimerMax: 1.25
   mapSize: {x: 216, y: 216}
   enemyPrefabList:
@@ -888,7 +888,7 @@ MonoBehaviour:
   - {fileID: 5143429607385807319, guid: 95c7204bdf7334210a9198b3c3cb9c0a, type: 3}
   - {fileID: 5143429607385807319, guid: cf481f3632a4a456b89f12e6d7cb3f06, type: 3}
   - {fileID: 5143429607385807319, guid: 0eeffe3ae80dd4f5f91d42afddd20eee, type: 3}
-  enemySpawnCompareValues: 1e000000460000005a00000064000000
+  enemySpawnCompareValues: 1e000000500000005f00000064000000
 --- !u!4 &309000729
 Transform:
   m_ObjectHideFlags: 0
