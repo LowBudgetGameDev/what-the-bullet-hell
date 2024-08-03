@@ -27,6 +27,12 @@ public class LazerAttack : MonoBehaviour, IBossAttack
 
         float spinSpeed = 18;
         rigidbody2D.angularVelocity = spinSpeed;
+
+        RepeatedFunctionTimer soundMaker = RepeatedFunctionTimer.Create(
+            () =>
+            {
+                SoundManager.Instance.PlaySound(SoundManager.Sound.Boss_Lazer);
+            }, 2f, 15f);
     }
 
     public void StopAttack()

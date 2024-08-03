@@ -40,4 +40,9 @@ public class SpikeAttack : MonoBehaviour, IBossAttack
         rigidbody2D.angularVelocity = 0f;
         rigidbody2D.rotation = 0f;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Boss_Bounce);
+    }
 }

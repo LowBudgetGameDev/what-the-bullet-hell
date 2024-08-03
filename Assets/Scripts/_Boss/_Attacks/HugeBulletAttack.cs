@@ -24,6 +24,7 @@ public class HugeBulletAttack : MonoBehaviour, IBossAttack
 
         if (shootTimer < 0f)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Large_Boss_Shoot);
             Shoot();
             shootTimer += shootTimerMax;
         }

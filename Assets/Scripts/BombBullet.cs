@@ -56,6 +56,7 @@ public class BombBullet : MonoBehaviour
             rigidbody2D.position = explosionPos;
             reachedPos = true;
             explosionIndicator.SetActive(true);
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Bomb_Tick);
         }
     }
 
@@ -67,6 +68,7 @@ public class BombBullet : MonoBehaviour
 
         if (explosionTimer < 0f)
         {
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Big_Boom);
             Explode();
         }
     }

@@ -32,6 +32,14 @@ public class HealAttack : MonoBehaviour, IBossAttack
         Transform healingBall4 = Instantiate(ballPrefab, new Vector3(-30f, -15f), Quaternion.identity);
         healingBall4.GetComponent<HealingBall>().Setup(transform, 6250);
         healingBallInstances.Add(healingBall4);
+
+        RepeatedFunctionTimer soundMaker = RepeatedFunctionTimer.Create(
+            () =>
+            {
+                if (healingBall1 == null && healingBall2 == null && healingBall3 == null && healingBall4 == null) return;
+
+                SoundManager.Instance.PlaySound(SoundManager.Sound.Boss_Heal);
+            },1f, 15f);
     }
 
     public void StopAttack()
