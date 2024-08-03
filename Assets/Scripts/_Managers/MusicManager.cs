@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager Instance { get; private set; }
+
     [SerializeField] private AudioClip mainTheme;
     [SerializeField] private AudioClip bossTheme;
 
@@ -12,6 +14,8 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         audioSource = GetComponent<AudioSource>();
         lowPassFilter = GetComponent<AudioLowPassFilter>();
 
@@ -50,5 +54,10 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = bossTheme;
 
         audioSource.Play();
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 }

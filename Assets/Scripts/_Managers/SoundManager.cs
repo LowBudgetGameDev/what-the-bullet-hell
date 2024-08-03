@@ -79,8 +79,12 @@ public class SoundManager : MonoBehaviour
     private Dictionary<Sound, AudioClip> soundAudioClipDictionary;
     private Dictionary<SoundType, List<Sound>> soundTypeDictionary;
 
+    private float volume;
+
     private void Awake()
     {
+        volume = 1f;
+
         Instance = this;
 
         audioSource = GetComponent<AudioSource>();
@@ -110,11 +114,16 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(Sound sound, float volumeScale = 1)
     {
-        audioSource.PlayOneShot(soundAudioClipDictionary[sound], volumeScale);
+        audioSource.PlayOneShot(soundAudioClipDictionary[sound], volume * volumeScale);
     }
 
     public void PlayRandomSoundOfType(SoundType type, float volumeScale = 1)
     {
-        PlaySound(soundTypeDictionary[type][Random.Range(0, soundTypeDictionary[type].Count)], volumeScale);
+        PlaySound(soundTypeDictionary[type][Random.Range(0, soundTypeDictionary[type].Count)], volume * volumeScale);
+    }
+
+    public void SetVolume(float volume)
+    {
+        this.volume = volume;
     }
 }
