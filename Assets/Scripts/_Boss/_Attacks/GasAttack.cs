@@ -39,6 +39,13 @@ public class GasAttack : MonoBehaviour, IBossAttack
     public void Attack()
     {
         isAttacking = true;
+        shootTimerMax = 1f;
+    }
+
+    public void BetterAttack()
+    {
+        isAttacking = true;
+        shootTimerMax = 0.75f;
     }
 
     public void StopAttack()

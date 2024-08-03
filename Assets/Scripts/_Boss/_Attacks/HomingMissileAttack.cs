@@ -50,6 +50,13 @@ public class HomingMissileAttack : MonoBehaviour, IBossAttack
     public void Attack()
     {
         isAttacking = true;
+        shootTimerMax = 3f;
+    }
+
+    public void BetterAttack()
+    {
+        isAttacking = true;
+        shootTimerMax = 2f;
     }
 
     public void StopAttack()

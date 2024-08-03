@@ -46,6 +46,16 @@ public class HugeBulletAttack : MonoBehaviour, IBossAttack
     {
         isAttacking = true;
         transform.position = new Vector3(0f, 250f, 0f);
+
+        shootTimerMax = 5f;
+    }
+
+    public void BetterAttack()
+    {
+        isAttacking = true;
+        transform.position = new Vector3(0f, 250f, 0f);
+
+        shootTimerMax = 2f;
     }
 
     public void StopAttack()

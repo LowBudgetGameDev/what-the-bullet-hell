@@ -29,6 +29,20 @@ public class SpikeAttack : MonoBehaviour, IBossAttack
         rigidbody2D.angularVelocity = 120f;
     }
 
+    public void BetterAttack()
+    {
+        spikesInstance = Instantiate(spikes, transform);
+
+        PhysicsMaterial2D material = new PhysicsMaterial2D();
+        material.bounciness = 1;
+        material.friction = 0;
+        rigidbody2D.sharedMaterial = material;
+
+        float moveSpeed = 40f;
+        rigidbody2D.velocity = UtilsClass.AngleDegreesToVector(Random.Range(0, 360)) * moveSpeed;
+        rigidbody2D.angularVelocity = 120f;
+    }
+
     public void StopAttack()
     {
         Destroy(spikesInstance.gameObject);

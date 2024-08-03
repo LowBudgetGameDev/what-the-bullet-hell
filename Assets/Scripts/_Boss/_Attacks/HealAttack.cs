@@ -42,6 +42,11 @@ public class HealAttack : MonoBehaviour, IBossAttack
             },1f, 15f);
     }
 
+    public void BetterAttack()
+    {
+        Attack();
+    }
+
     public void StopAttack()
     {
         foreach (Transform healingBall in healingBallInstances)

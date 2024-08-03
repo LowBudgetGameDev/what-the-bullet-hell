@@ -46,6 +46,14 @@ public class BombAttack : MonoBehaviour, IBossAttack
     {
         isAttacking = true;
         transform.position = new Vector3(0f, 250f, 0f);
+        shootTimerMax = 2f;
+    }
+
+    public void BetterAttack()
+    {
+        isAttacking = true;
+        transform.position = new Vector3(0f, 250f, 0f);
+        shootTimerMax = 1.5f;
     }
 
     public void StopAttack()

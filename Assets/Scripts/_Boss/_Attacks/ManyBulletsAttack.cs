@@ -55,6 +55,11 @@ public class ManyBulletsAttack : MonoBehaviour, IBossAttack
         rigidbody2D.angularVelocity = -90f;
     }
 
+    public void BetterAttack()
+    {
+        Attack();
+    }
+
     public void StopAttack()
     {
         isAttacking = false;

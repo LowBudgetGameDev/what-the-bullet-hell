@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    private HealthSystem healthSystem;
+
     private IBossAttack[] attackList;
 
     private int collisionDamage = 50;
@@ -18,6 +20,7 @@ public class Boss : MonoBehaviour
 
     public void SetUp()
     {
+        healthSystem = GetComponent<HealthSystem>();
         attackList = GetComponents<IBossAttack>();
         isResting = true;
         FunctionTimer.Create(() => { isResting = false; }, 1f);
@@ -36,7 +39,14 @@ public class Boss : MonoBehaviour
         IBossAttack attack = attackList[attackIndex];
         prevAttackIndex = attackIndex;
 
-        attack.Attack();
+        if (healthSystem.GetHealthNormalized() > 0.5f)
+        {
+            attack.Attack();
+        }
+        else
+        {
+            attack.BetterAttack();
+        }
 
         FunctionTimer.Create(() =>
         {

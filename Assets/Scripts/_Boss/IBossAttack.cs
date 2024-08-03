@@ -5,5 +5,6 @@ using UnityEngine;
 public interface IBossAttack
 {
     public void Attack();
+    public void BetterAttack();
     public void StopAttack();
 }
