@@ -46,13 +46,14 @@ public class GameManager : MonoBehaviour
         {
             OnMaxLevelReached?.Invoke(this, EventArgs.Empty);
 
-            FunctionTimer.Create(PlayBossCutscene, 3f);
+            FunctionTimer.Create(PlayBossCutscene, 2f);
         }
     }
 
     private void PlayBossCutscene()
     {
         playerTransform.position = new Vector3(0f, -25f, 0f);
+        playerTransform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         playerTransform.GetComponent<PlayerController>().enabled = false;
 
         bossCutscene.SetActive(true);
