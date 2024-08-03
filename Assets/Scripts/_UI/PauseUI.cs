@@ -9,6 +9,13 @@ public class PauseUI : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider soundVolumeSlider;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Start()
     {
         musicVolumeSlider.onValueChanged.AddListener((float value) =>
@@ -26,10 +33,24 @@ public class PauseUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && (Time.timeScale == 1f || pauseUI.activeSelf))
         {
-            pauseUI.SetActive(!pauseUI.activeSelf);
-            Time.timeScale = pauseUI.activeSelf ? 0f : 1f;
+            if (pauseUI.activeSelf)
+            {
+                animator.SetTrigger("Close");
+
+                FunctionTimer.Create(() =>
+                {
+                    pauseUI.SetActive(false);
+                    Time.timeScale = 1f;
+                }, 0.75f);
+            }
+            else
+            {
+                pauseUI.SetActive(true);
+                animator.SetTrigger("Open");
+                Time.timeScale = 0f;
+            }
         }
     }
 }
