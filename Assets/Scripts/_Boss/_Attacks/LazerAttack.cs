@@ -31,7 +31,7 @@ public class LazerAttack : MonoBehaviour, IBossAttack
         RepeatedFunctionTimer soundMaker = RepeatedFunctionTimer.Create(
             () =>
             {
-                SoundManager.Instance.PlaySound(SoundManager.Sound.Boss_Lazer);
+                SoundManager.Instance.PlaySound(SoundManager.Sound.Boss_Lazer, 0.95f);
             }, 2f, 15f);
     }
 

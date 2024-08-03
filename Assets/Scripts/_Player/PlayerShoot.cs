@@ -26,7 +26,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void PlayerShoot_OnShoot(object sender, System.EventArgs e)
     {
-        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot, 0.5f);
 
         for (int i = 0; i < bulletsPerShot; i++)
         {

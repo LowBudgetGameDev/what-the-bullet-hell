@@ -59,11 +59,11 @@ public class UpgradeManager : MonoBehaviour
 
         if (upgrade.GetLevel() == 1)
         {
-            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Unlock);
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Unlock, 0.85f);
         }
         else
         {
-            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Upgrade);
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Upgrade, 0.9f);
         }
     }
 

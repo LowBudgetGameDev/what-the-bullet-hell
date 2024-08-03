@@ -68,7 +68,7 @@ public class BombBullet : MonoBehaviour
 
         if (explosionTimer < 0f)
         {
-            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Big_Boom);
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Big_Boom, 0.8f);
             Explode();
         }
     }

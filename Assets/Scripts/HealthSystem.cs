@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
             Die();
         }
 
-        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Hit);
+        SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Hit, 0.75f);
     }
 
     public void Poison(int poisonDamage, float damageInterval, float duration)

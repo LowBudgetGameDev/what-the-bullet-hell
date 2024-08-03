@@ -44,7 +44,7 @@ public class EnemyShoot : MonoBehaviour
                 Shoot(360f / numBullets * i);
             }
 
-            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot);
+            SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot, 0.5f);
 
             shootTimer += shootTimerMax;
         }

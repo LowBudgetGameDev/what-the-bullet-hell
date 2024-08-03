@@ -108,13 +108,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(Sound sound)
+    public void PlaySound(Sound sound, float volumeScale = 1)
     {
-        audioSource.PlayOneShot(soundAudioClipDictionary[sound]);
+        audioSource.PlayOneShot(soundAudioClipDictionary[sound], volumeScale);
     }
 
-    public void PlayRandomSoundOfType(SoundType type)
+    public void PlayRandomSoundOfType(SoundType type, float volumeScale = 1)
     {
-        PlaySound(soundTypeDictionary[type][Random.Range(0, soundTypeDictionary[type].Count)]);
+        PlaySound(soundTypeDictionary[type][Random.Range(0, soundTypeDictionary[type].Count)], volumeScale);
     }
 }
