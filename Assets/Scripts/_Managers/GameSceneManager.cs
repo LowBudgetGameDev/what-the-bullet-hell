@@ -13,6 +13,11 @@ public class GameSceneManager : MonoBehaviour
 
     public static void ChangeScene(Scene scene)
     {
-        SceneManager.LoadScene(scene.ToString());
+        TransitionManager.Instance.StartTransition();
+
+        FunctionTimer.Create(() =>
+        {
+            SceneManager.LoadScene(scene.ToString());
+        }, 1f);
     }
 }
