@@ -1448,6 +1448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349559770}
   - component: {fileID: 349559769}
+  - component: {fileID: 349559771}
   m_Layer: 0
   m_Name: BossVirtualCamera
   m_TagString: Untagged
@@ -1510,6 +1511,18 @@ Transform:
   - {fileID: 747443773}
   m_Father: {fileID: 1414312677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349559771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349559768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26029cce4b1dd403e8ad389785397465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &417804667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,6 +1876,7 @@ GameObject:
   - component: {fileID: 515916304}
   - component: {fileID: 515916307}
   - component: {fileID: 515916308}
+  - component: {fileID: 515916309}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1940,6 +1954,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &515916309
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515916303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &518957197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684027831}
   - component: {fileID: 684027830}
+  - component: {fileID: 684027832}
   m_Layer: 0
   m_Name: VirtualCamera
   m_TagString: Untagged
@@ -2769,6 +2801,18 @@ Transform:
   - {fileID: 515916304}
   m_Father: {fileID: 1414312677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684027832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684027829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26029cce4b1dd403e8ad389785397465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &742320669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,6 +2930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747443773}
   - component: {fileID: 747443775}
+  - component: {fileID: 747443776}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2920,6 +2965,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &747443776
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747443772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &776557443
 GameObject:
   m_ObjectHideFlags: 0
