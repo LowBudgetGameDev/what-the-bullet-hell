@@ -45,6 +45,7 @@ public class EnemyShoot : MonoBehaviour
             }
 
             SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Shoot, 0.5f);
+            CinemachineShake.Instance.ShakeCamera(0.75f, 0.1f);
 
             shootTimer += shootTimerMax;
         }

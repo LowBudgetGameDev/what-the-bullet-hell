@@ -27,6 +27,7 @@ public class HomingMissileAttack : MonoBehaviour, IBossAttack
         if (shootTimer < 0f)
         {
             SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Boss_Shoot, 0.9f);
+            CinemachineShake.Instance.ShakeCamera(3f, 0.25f);
             Shoot();
             shootTimer += shootTimerMax;
         }

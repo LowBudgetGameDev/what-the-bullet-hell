@@ -58,5 +58,6 @@ public class SpikeAttack : MonoBehaviour, IBossAttack
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Boss_Bounce);
+        CinemachineShake.Instance.ShakeCamera(15f, 0.25f);
     }
 }

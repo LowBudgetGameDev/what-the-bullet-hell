@@ -25,6 +25,7 @@ public class GasAttack : MonoBehaviour, IBossAttack
         if (shootTimer < 0f)
         {
             SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Poison_Shoot);
+            CinemachineShake.Instance.ShakeCamera(3f, 0.25f);
             Shoot();
             shootTimer += shootTimerMax;
         }

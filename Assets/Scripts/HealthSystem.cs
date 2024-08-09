@@ -50,6 +50,7 @@ public class HealthSystem : MonoBehaviour
         }
 
         SoundManager.Instance.PlayRandomSoundOfType(SoundManager.SoundType.Hit, 0.75f);
+        CinemachineShake.Instance.ShakeCamera(3f, 0.25f);
     }
 
     public void Poison(int poisonDamage, float damageInterval, float duration)
