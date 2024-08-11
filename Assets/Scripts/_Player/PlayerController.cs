@@ -23,6 +23,20 @@ public class PlayerController : MonoBehaviour
         originalShootTimerMax = shootTimerMax;
     }
 
+    private void Start()
+    {
+        GetComponent<HealthSystem>().OnDamaged += PlayerController_OnDamaged;
+    }
+
+    private void PlayerController_OnDamaged(object sender, EventArgs e)
+    {
+        float strength = -(GetComponent<HealthSystem>().GetHealthNormalized() - 0.5f) * 2f;
+
+        strength = Mathf.Clamp01(strength);
+
+        HealthVignette.SetVignetteStrength(strength);
+    }
+
     public void DecreaseShootTimeMax(float multiplier)
     {
         shootTimerMax = originalShootTimerMax * multiplier;
