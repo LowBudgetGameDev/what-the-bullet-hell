@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button startButton;
+    [SerializeField] private Button quitButton;
 
     private void Start()
     {
         startButton.onClick.AddListener(() =>
         {
             GameSceneManager.ChangeScene(GameSceneManager.Scene.MainScene);
+        });
+
+        quitButton.onClick.AddListener(() =>
+        {
+            Application.Quit();
         });
     }
 }
