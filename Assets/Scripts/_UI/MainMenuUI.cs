@@ -8,6 +8,8 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button quitButton;
 
+    [SerializeField] private Button muteButton;
+
     private void Start()
     {
         startButton.onClick.AddListener(() =>
@@ -18,6 +20,11 @@ public class MainMenuUI : MonoBehaviour
         quitButton.onClick.AddListener(() =>
         {
             Application.Quit();
+        });
+
+        muteButton.onClick.AddListener(() =>
+        {
+            MenuMusicManager.Instance.MuteMenuMusic();
         });
     }
 }
