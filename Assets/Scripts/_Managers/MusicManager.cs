@@ -33,6 +33,8 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
+        if (lowPassFilter.cutoffFrequency != 5000 && lowPassFilter.cutoffFrequency != 22000) return;
+
         if (Time.timeScale == 0)
         {
             lowPassFilter.cutoffFrequency = 5000;
@@ -45,12 +47,14 @@ public class MusicManager : MonoBehaviour
 
     private void MusicManager_OnMaxLevelReached(object sender, System.EventArgs e)
     {
-        audioSource.Stop();
+        lowPassFilter.cutoffFrequency = 6000;
     }
 
     private void MusicManager_OnBossBattleBegin(object sender, System.EventArgs e)
     {
         audioSource.Stop();
+
+        lowPassFilter.cutoffFrequency = 22000;
 
         audioSource.clip = bossTheme;
 
