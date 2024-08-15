@@ -18,10 +18,14 @@ public class PauseUI : MonoBehaviour
 
     private void Start()
     {
+        musicVolumeSlider.value = MusicManager.Instance.GetVolume();
+
         musicVolumeSlider.onValueChanged.AddListener((float value) =>
         {
             MusicManager.Instance.SetVolume(value);
         });
+
+        soundVolumeSlider.value = SoundManager.Instance.GetVolume();
 
         soundVolumeSlider.onValueChanged.AddListener((float value) =>
         {

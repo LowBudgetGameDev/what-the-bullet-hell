@@ -13,6 +13,8 @@ public class GameSceneManager : MonoBehaviour
 
     public static void ChangeScene(Scene scene)
     {
+        PlayerPrefs.Save();
+
         TransitionManager.Instance.StartTransition();
 
         FunctionTimer.Create(() =>

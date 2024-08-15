@@ -20,6 +20,7 @@ public class MusicManager : MonoBehaviour
         lowPassFilter = GetComponent<AudioLowPassFilter>();
 
         audioSource.clip = mainTheme;
+        audioSource.volume = PlayerPrefs.GetFloat("musicVolume", 1f);
 
         audioSource.Play();
     }
@@ -56,8 +57,15 @@ public class MusicManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public float GetVolume()
+    {
+        return audioSource.volume;
+    }
+
     public void SetVolume(float volume)
     {
         audioSource.volume = volume;
+
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
 }

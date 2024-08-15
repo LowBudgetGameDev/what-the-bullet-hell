@@ -83,7 +83,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        volume = 1f;
+        volume = PlayerPrefs.GetFloat("sfxVolume", 1f);
 
         Instance = this;
 
@@ -122,8 +122,15 @@ public class SoundManager : MonoBehaviour
         PlaySound(soundTypeDictionary[type][Random.Range(0, soundTypeDictionary[type].Count)], volume * volumeScale);
     }
 
+    public float GetVolume()
+    {
+        return volume;
+    }
+
     public void SetVolume(float volume)
     {
         this.volume = volume;
+
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 }
