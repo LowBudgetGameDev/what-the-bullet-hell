@@ -22,6 +22,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24de742d6998a4f6f83034b2251d89ec, type: 2}
   icon: {fileID: 21300000, guid: 3526df34a934048eb92530189ec37ace, type: 3}
   nameString: Shotgun
-  description: You gain a spread shot meaning that you shoot multiple bullets at
-    the same time.
+  description: You gain a spread shot meaning that you shoot multiple bullets once,
+    but those bullets are smaller and deal less damage.
   color: {r: 1, g: 1, b: 1, a: 1}
