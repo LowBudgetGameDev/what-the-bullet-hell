@@ -12,6 +12,8 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
+
         startButton.onClick.AddListener(() =>
         {
             GameSceneManager.ChangeScene(GameSceneManager.Scene.MainScene);
